@@ -1,0 +1,8 @@
+doctrine:
+  orm:
+    mappings:
+      Commissioning:
+        is_bundle: false
+        dir: '%kernel.project_dir%/../Commissioning/src/Entity'
+        prefix: 'App\Commissioning\Entity'
+        alias: Commissioning

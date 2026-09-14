@@ -1,0 +1,50 @@
+{
+  "component": "Commissioning",
+  "baseUrlDefault": "http://localhost:8000",
+  "sequence": [
+    {
+      "name": "preview_percentage_calculation",
+      "method": "POST",
+      "path": "/api/commissioning/calculation/preview",
+      "payload": "docs/smoke/payloads/calculation-preview-percentage.json",
+      "expectedShape": "docs/smoke/expected/calculation-preview-response-shape.json"
+    },
+    {
+      "name": "record_fixed_calculation",
+      "method": "POST",
+      "path": "/api/commissioning/calculation",
+      "payload": "docs/smoke/payloads/calculation-record-fixed.json",
+      "expectedShape": "docs/smoke/expected/calculation-record-response-shape.json"
+    },
+    {
+      "name": "record_duplicate_calculation",
+      "method": "POST",
+      "path": "/api/commissioning/calculation",
+      "payload": "docs/smoke/payloads/calculation-record-duplicate.json",
+      "expectedShape": "docs/smoke/expected/calculation-record-response-shape.json",
+      "expectedSemantic": {
+        "duplicate": true
+      }
+    },
+    {
+      "name": "mark_settlement_ready",
+      "method": "POST",
+      "path": "/api/commissioning/ledger/settlement/ready",
+      "payload": "docs/smoke/payloads/settlement-ready.json",
+      "expectedShape": "docs/smoke/expected/settlement-ready-response-shape.json"
+    },
+    {
+      "name": "create_settlement_batch",
+      "method": "POST",
+      "path": "/api/commissioning/settlement/batch",
+      "payload": "docs/smoke/payloads/settlement-batch-create.json",
+      "expectedShape": "docs/smoke/expected/settlement-batch-create-response-shape.json"
+    },
+    {
+      "name": "export_settlement_batch",
+      "method": "GET",
+      "path": "/api/commissioning/settlement/batch/smoke-settlement-batch-1001/export",
+      "expectedShape": "docs/smoke/expected/settlement-batch-export-response-shape.json"
+    }
+  ]
+}

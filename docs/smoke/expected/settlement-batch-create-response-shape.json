@@ -1,0 +1,7 @@
+{
+  "batchReference": "string",
+  "status": "string",
+  "entryCount": "integer",
+  "totalMinorAmount": "integer",
+  "duplicateEntryCount": "integer"
+}

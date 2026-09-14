@@ -1,0 +1,8 @@
+security:
+  providers:
+    commissioning_runtime:
+      memory: ~
+  firewalls:
+    commissioning_runtime:
+      pattern: ^/
+      security: false

@@ -1,0 +1,123 @@
+{
+  "name": "commissioning/commission",
+  "description": "SmartResponsor commissioning component",
+  "type": "symfony-bundle",
+  "license": "proprietary",
+  "require": {
+    "php": "^8.4",
+    "collectioning/collection": "dev-master",
+    "cruding/crud": "dev-master",
+    "easycorp/easyadmin-bundle": "^5.0",
+    "interfacing/interface": "dev-master",
+    "objecting/object": "dev-master",
+    "tabling/table": "dev-master",
+    "viewing/view": "dev-master",
+    "doctrine/doctrine-bundle": "^3.2",
+    "doctrine/doctrine-migrations-bundle": "^4.0",
+    "doctrine/orm": "^3.3",
+    "symfony/doctrine-bridge": "^8.1",
+    "symfony/framework-bundle": "^8.1",
+    "symfony/runtime": "^8.1",
+    "symfony/security-bundle": "^8.1",
+    "symfony/serializer": "^8.1",
+    "symfony/twig-bundle": "^8.1",
+    "symfony/yaml": "^8.1"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.95",
+    "phpstan/phpstan": "^2.2",
+    "phpstan/phpstan-doctrine": "^2.0",
+    "phpunit/phpunit": "^12.0",
+    "symfony/panther": "^2.3",
+    "symfony/test-pack": "^1.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\Commissioning\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "App\\Commissioning\\Tests\\": "tests/"
+    }
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../Collectioning",
+      "options": {
+        "symlink": true,
+        "versions": { "collectioning/collection": "dev-master" }
+      }
+    },
+    {
+      "type": "path",
+      "url": "../Cruding",
+      "options": {
+        "symlink": true,
+        "versions": { "cruding/crud": "dev-master" }
+      }
+    },
+    {
+      "type": "path",
+      "url": "../Interfacing",
+      "options": {
+        "symlink": true,
+        "versions": { "interfacing/interface": "dev-master" }
+      }
+    },
+    {
+      "type": "path",
+      "url": "../Objecting",
+      "options": {
+        "symlink": true,
+        "versions": { "objecting/object": "dev-master" }
+      }
+    },
+    {
+      "type": "path",
+      "url": "../Tabling",
+      "options": {
+        "symlink": true,
+        "versions": { "tabling/table": "dev-master" }
+      }
+    },
+    {
+      "type": "path",
+      "url": "../Viewing",
+      "options": {
+        "symlink": true,
+        "versions": { "viewing/view": "dev-master" }
+      }
+    }
+  ],
+  "scripts": {
+    "test": "phpunit",
+    "test:coverage": "@php -d xdebug.mode=coverage vendor/bin/phpunit --path-coverage --coverage-text=var/coverage/summary.txt",
+    "phpstan": "phpstan analyse -c phpstan.neon --memory-limit=1G",
+    "cs:check": "php-cs-fixer fix --dry-run --diff --verbose",
+    "cs:fix": "php-cs-fixer fix --verbose",
+    "runtime:about": "php bin/console about --no-interaction",
+    "lint:container": "php bin/console lint:container --no-interaction",
+    "lint:yaml": "php bin/console lint:yaml config --parse-tags --no-interaction",
+    "doctrine:schema:validate": "php bin/console doctrine:schema:validate --skip-sync --no-interaction",
+    "doctrine:migrations:up-to-date": "php bin/console doctrine:migrations:up-to-date --no-interaction",
+    "gating:check": "php .gating/bin/gating check --target=. --profile=.gating/profile/component/commissioning.yaml",
+    "gating:canon": "php .gating/bin/gating check --target=. --profile=.gating/profile/component/commissioning.yaml --rule-set=.gating/profile/rule-set/commissioning-canon.yaml",
+    "quality": ["@cs:check", "@phpstan", "@test"]
+  },
+  "extra": {
+    "symfony": {
+      "bundle": "App\\Commissioning\\CommissioningBundle",
+      "require": "8.1.*"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "symfony/runtime": true
+    }
+  }
+}

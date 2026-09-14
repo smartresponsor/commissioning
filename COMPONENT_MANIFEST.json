@@ -1,0 +1,30 @@
+{
+  "component": "Commissioning",
+  "runtime_hardening": {
+    "services_config_consolidated": true,
+    "static_analysis_preflight": true,
+    "service_discovery_hardened": true,
+    "doctrine_repository_preflight": true
+  },
+  "static_analysis": {
+    "phpstan_level": 6,
+    "baseline": "not_created"
+  },
+  "service_discovery": {
+    "excluded_non_service_layers": [
+      "DTO",
+      "Entity",
+      "Enum",
+      "Event",
+      "Exception",
+      "ValueObject",
+      "CalculatorInterface",
+      "RepositoryInterface",
+      "ResolverInterface",
+      "ServiceInterface"
+    ]
+  },
+  "dependencies": {
+    "symfony_doctrine_bridge": "^8.0"
+  }
+}

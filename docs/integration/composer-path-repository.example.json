@@ -1,0 +1,14 @@
+{
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../Commissioning",
+      "options": {
+        "symlink": true
+      }
+    }
+  ],
+  "require": {
+    "commissioning/commission": "*"
+  }
+}

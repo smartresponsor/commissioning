@@ -1,0 +1,7 @@
+{
+  "eventReference": "string",
+  "currencyCode": "string",
+  "basisMinorAmount": "integer",
+  "commissionMinorAmount": "integer",
+  "status": "string"
+}

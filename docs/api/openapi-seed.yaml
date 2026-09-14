@@ -1,0 +1,47 @@
+openapi: 3.1.0
+info:
+  title: Commissioning API
+  version: 0.1.0
+  description: API seed for Commissioning contract surface.
+paths:
+  /api/commissioning/calculation/preview:
+    post:
+      operationId: previewCommissionCalculation
+      summary: Calculate commission without persistence.
+      responses:
+        '200':
+          description: Commission calculation preview result.
+  /api/commissioning/calculation:
+    post:
+      operationId: recordCommissionCalculation
+      summary: Calculate and persist commission.
+      responses:
+        '200':
+          description: Recorded commission result.
+  /api/commissioning/ledger/settlement/ready:
+    post:
+      operationId: markCommissionLedgerSettlementReady
+      summary: Mark pending ledger entries settlement-ready.
+      responses:
+        '200':
+          description: Settlement readiness result.
+  /api/commissioning/settlement/batch:
+    post:
+      operationId: createCommissionSettlementBatch
+      summary: Create settlement batch.
+      responses:
+        '200':
+          description: Settlement batch creation result.
+  /api/commissioning/settlement/batch/export/{batchReference}:
+    get:
+      operationId: exportCommissionSettlementBatch
+      summary: Export settlement batch for Paying/Payouting.
+      parameters:
+        - name: batchReference
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Settlement batch export result.

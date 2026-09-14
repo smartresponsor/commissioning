@@ -1,0 +1,13 @@
+{
+  "eventReference": "smoke-record-order-1001",
+  "currencyCode": "USD",
+  "basisMinorAmount": 15000,
+  "planCode": "default",
+  "attributionSourceType": "affiliate",
+  "attributionSourceReference": "affiliate-smoke",
+  "context": {
+    "commission_enabled": "1",
+    "commission_rate_type": "fixed",
+    "commission_fixed_minor_amount": 500
+  }
+}

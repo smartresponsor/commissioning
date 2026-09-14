@@ -1,0 +1,3 @@
+commissioning:
+  default_plan_code: 'default'
+  development_fallbacks: true

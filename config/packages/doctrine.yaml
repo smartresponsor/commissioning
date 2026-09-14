@@ -1,0 +1,19 @@
+doctrine:
+  dbal:
+    url: '%env(resolve:DATABASE_URL)%'
+  orm:
+    auto_mapping: false
+    naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+    validate_xml_mapping: true
+    mappings:
+      Objecting:
+        is_bundle: false
+        type: attribute
+        dir: '%kernel.project_dir%/vendor/objecting/object/src/Embeddable'
+        prefix: 'App\Objecting\Embeddable'
+        alias: Objecting
+      Commissioning:
+        is_bundle: false
+        dir: '%kernel.project_dir%/src/Entity'
+        prefix: 'App\Commissioning\Entity'
+        alias: Commissioning

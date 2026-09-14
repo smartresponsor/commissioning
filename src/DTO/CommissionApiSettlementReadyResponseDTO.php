@@ -1,0 +1,13 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Commissioning\DTO;
+
+final readonly class CommissionApiSettlementReadyResponseDTO
+{
+    public function __construct(
+        public int $markedCount,
+    ) {
+    }
+}

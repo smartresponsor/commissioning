@@ -1,0 +1,154 @@
+parameters:
+  env(DATABASE_URL): 'sqlite:///%kernel.project_dir%/var/commissioning.db'
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  App\Commissioning\:
+    resource: '../src/'
+    exclude:
+      - '../src/DependencyInjection/'
+      - '../src/DTO/'
+      - '../src/Entity/'
+      - '../src/Enum/'
+      - '../src/Event/'
+      - '../src/Exception/'
+      - '../src/Kernel.php'
+      - '../src/ValueObject/'
+      - '../src/CalculatorInterface/'
+      - '../src/RepositoryInterface/'
+      - '../src/ResolverInterface/'
+      - '../src/ServiceInterface/'
+
+  App\Commissioning\Command\:
+    resource: '../src/Command/'
+
+  App\Commissioning\Controller\:
+    resource: '../src/Controller/'
+    tags: ['controller.service_arguments']
+
+  App\Commissioning\Repository\:
+    resource: '../src/Repository/'
+
+  App\Commissioning\RepositoryInterface\CommissionAttributionRepositoryInterface:
+    alias: App\Commissioning\Repository\CommissionAttributionRepository
+
+  App\Commissioning\RepositoryInterface\CommissionBeneficiaryRepositoryInterface:
+    alias: App\Commissioning\Repository\CommissionBeneficiaryRepository
+
+  App\Commissioning\RepositoryInterface\CommissionCalculationLineRepositoryInterface:
+    alias: App\Commissioning\Repository\CommissionCalculationLineRepository
+
+  App\Commissioning\RepositoryInterface\CommissionCalculationRepositoryInterface:
+    alias: App\Commissioning\Repository\CommissionCalculationRepository
+
+  App\Commissioning\RepositoryInterface\CommissionLedgerEntryRepositoryInterface:
+    alias: App\Commissioning\Repository\CommissionLedgerEntryRepository
+
+  App\Commissioning\RepositoryInterface\CommissionPlanRepositoryInterface:
+    alias: App\Commissioning\Repository\CommissionPlanRepository
+
+  App\Commissioning\RepositoryInterface\CommissionRateRepositoryInterface:
+    alias: App\Commissioning\Repository\CommissionRateRepository
+
+  App\Commissioning\RepositoryInterface\CommissionRuleRepositoryInterface:
+    alias: App\Commissioning\Repository\CommissionRuleRepository
+
+  App\Commissioning\RepositoryInterface\CommissionSettlementBatchEntryRepositoryInterface:
+    alias: App\Commissioning\Repository\CommissionSettlementBatchEntryRepository
+
+  App\Commissioning\RepositoryInterface\CommissionSettlementBatchRepositoryInterface:
+    alias: App\Commissioning\Repository\CommissionSettlementBatchRepository
+
+  App\Commissioning\RepositoryInterface\CommissionTierRepositoryInterface:
+    alias: App\Commissioning\Repository\CommissionTierRepository
+
+  App\Commissioning\Service\:
+    resource: '../src/Service/'
+
+  App\Commissioning\Resolver\:
+    resource: '../src/Resolver/'
+
+  App\Commissioning\Calculator\:
+    resource: '../src/Calculator/'
+    tags: ['commissioning.calculator']
+
+  App\Commissioning\Calculator\CommissionCalculationEngine:
+    arguments:
+      $calculators: !tagged_iterator commissioning.calculator
+
+  App\Commissioning\Service\CommissionDemoRouteGuardService:
+    arguments:
+      $environment: '%kernel.environment%'
+
+  App\Commissioning\CalculatorInterface\CommissionCalculationEngineInterface:
+    alias: App\Commissioning\Calculator\CommissionCalculationEngine
+
+  App\Commissioning\ResolverInterface\CommissionBeneficiaryResolverInterface:
+    alias: App\Commissioning\Resolver\CommissionBeneficiaryResolver
+
+  App\Commissioning\ResolverInterface\CommissionPlanResolverInterface:
+    alias: App\Commissioning\Resolver\CommissionPlanResolver
+
+  App\Commissioning\ResolverInterface\CommissionRateResolverInterface:
+    alias: App\Commissioning\Resolver\CommissionRateResolver
+
+  App\Commissioning\ResolverInterface\CommissionAttributionResolverInterface:
+    alias: App\Commissioning\Resolver\CommissionAttributionResolver
+
+  App\Commissioning\ServiceInterface\CommissionApiJsonRequestMappingServiceInterface:
+    alias: App\Commissioning\Service\CommissionApiJsonRequestMappingService
+
+  App\Commissioning\ServiceInterface\CommissionApiRequestMappingServiceInterface:
+    alias: App\Commissioning\Service\CommissionApiRequestMappingService
+
+  App\Commissioning\ServiceInterface\CommissionCalculationRecordServiceInterface:
+    alias: App\Commissioning\Service\CommissionCalculationRecordService
+
+  App\Commissioning\ServiceInterface\CommissionCalculationServiceInterface:
+    alias: App\Commissioning\Service\CommissionCalculationService
+
+  App\Commissioning\ServiceInterface\CommissionDemoRouteGuardServiceInterface:
+    alias: App\Commissioning\Service\CommissionDemoRouteGuardService
+
+  App\Commissioning\ServiceInterface\CommissionDevelopmentSeedServiceInterface:
+    alias: App\Commissioning\Service\CommissionDevelopmentSeedService
+
+  App\Commissioning\ServiceInterface\CommissionEconomicEventCalculationServiceInterface:
+    alias: App\Commissioning\Service\CommissionEconomicEventCalculationService
+    public: true
+
+  App\Commissioning\ServiceInterface\CommissionEconomicEventRecordServiceInterface:
+    alias: App\Commissioning\Service\CommissionEconomicEventRecordService
+    public: true
+
+  App\Commissioning\ServiceInterface\CommissionIdempotencyServiceInterface:
+    alias: App\Commissioning\Service\CommissionIdempotencyService
+
+  App\Commissioning\ServiceInterface\CommissionRuleEvaluationServiceInterface:
+    alias: App\Commissioning\Service\CommissionRuleEvaluationService
+
+  App\Commissioning\ServiceInterface\CommissionRuleSetEvaluationServiceInterface:
+    alias: App\Commissioning\Service\CommissionRuleSetEvaluationService
+
+  App\Commissioning\ServiceInterface\CommissionRuntimeAuditServiceInterface:
+    alias: App\Commissioning\Service\CommissionRuntimeAuditService
+
+  App\Commissioning\ServiceInterface\CommissionSettlementBatchExportServiceInterface:
+    alias: App\Commissioning\Service\CommissionSettlementBatchExportService
+    public: true
+
+  App\Commissioning\ServiceInterface\CommissionSettlementBatchServiceInterface:
+    alias: App\Commissioning\Service\CommissionSettlementBatchService
+    public: true
+
+  App\Commissioning\ServiceInterface\CommissionSettlementExportServiceInterface:
+    alias: App\Commissioning\Service\CommissionSettlementExportService
+
+  App\Commissioning\ServiceInterface\CommissionSettlementReadinessServiceInterface:
+    alias: App\Commissioning\Service\CommissionSettlementReadinessService
+
+  App\Commissioning\ServiceInterface\CommissionTransactionServiceInterface:
+    alias: App\Commissioning\Service\CommissionTransactionService

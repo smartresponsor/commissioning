@@ -1,0 +1,13 @@
+{
+  "eventReference": "smoke-preview-order-1001",
+  "currencyCode": "USD",
+  "basisMinorAmount": 10000,
+  "planCode": "default",
+  "attributionSourceType": "partner",
+  "attributionSourceReference": "partner-smoke",
+  "context": {
+    "commission_enabled": "1",
+    "commission_rate_type": "percentage",
+    "commission_percentage_rate": "10"
+  }
+}
