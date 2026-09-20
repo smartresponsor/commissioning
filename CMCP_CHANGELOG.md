@@ -164,3 +164,50 @@ Benchmark against mature ICM products and OCA/Odoo after RC: richer plan modelin
 - Behavioral/UI tooling: GREEN; behavioral/UI test coverage itself is post-RC debt.
 - Residual technical debt is warning-only: PHPDoc completeness, low PHP executable coverage, and missing behavioral/UI coverage inventories/tests.
 - Git integration: guarded local repository initialized on `master`; generated/runtime noise is ignored and embedded IDE/runtime log artifacts were removed from the index while preserved on disk. Signed baseline commit and remote-state verification are the only remaining integration steps.
+
+## 2026-09-20 — Commissioning RC continuation
+
+### Reconnaissance and baseline
+
+- Workspace: `D:\\PhpstormProjects\\www\\Commissioning`; branch `checkpoint/pre-origin-sync`, HEAD `348337396821e09022afce845459d481eb79b43b`.
+- Pre-existing worktree state preserved: three deleted `.gating` consumer-policy files were present before this run and are not part of this change.
+- Read current Commissioning instructions, Composer/runtime configuration, architecture/product/RC/risk/boundary/API documentation, source inventory, tests, and prior orchestration journal.
+- Read the mandatory Objecting, Cruding, Viewing, Interfacing, Gating, and Canonization contract contour. Canonization rules consulted for this pass: Canon011, Canon012, Canon017, Canon029, Canon039, Canon040.
+- External ICM benchmark: mature platforms emphasize calculation traceability, effective-dated rules, audit history, approvals/disputes, payout workflow automation, integrations, and clawback/retroactive handling. These remain growth work unless needed for current correctness.
+- Static quality baseline is GREEN: PHP-CS-Fixer, PHPStan, and PHPUnit pass (4 tests / 98 assertions before this pass).
+- Runtime baseline is RED outside Commissioning-owned code: Symfony container compilation fails in Cruding because `CrudBulkMutationHandlerResolver::$handlers` is not wired after the Cruding resolver resource definition overrides its earlier explicit tagged-iterator definition.
+
+### RC-critical workstream
+
+- Strengthen executable proof for Commissioning-owned calculation behavior without changing public API semantics.
+- Keep the reproduced Cruding container failure explicit as an upstream dependency blocker; do not duplicate Cruding-owned service wiring in Commissioning.
+- Re-run Commissioning static gates and coverage after tests, then re-check runtime to confirm the blocker remains external and unchanged.
+
+### Growth workstream (post-RC)
+
+- Effective-dated plan/rule revisions and retroactive recalculation.
+- Explainable calculation lineage and statement-style tracing.
+- Clawback/adjustment lifecycle, approval/dispute workflows, richer operator analytics, and broader external integrations.
+
+### Material risks and gates
+
+- Commission arithmetic is money-sensitive; tests must lock rounding, tier-boundary, fixed, hybrid, and unsupported-rate routing behavior.
+- Do not normalize or restore the pre-existing `.gating` deletions in this run.
+- Gates: `composer quality`, `composer test:coverage`, Composer validation, PHP lint for touched PHP, plus runtime/container retry for blocker confirmation.
+
+### Verification result
+
+- New calculator regression suite: GREEN; total PHPUnit result is 10 tests / 120 assertions.
+- `composer validate --strict --check-lock`: GREEN.
+- Changed PHP syntax: GREEN.
+- `composer quality`: GREEN after repository-standard line-ending normalization.
+- Fresh coverage: lines 18.12% (191/1054), methods 11.37% (29/255), branches 46.31% (69/149). Calculator engine/fixed/hybrid/percentage are fully covered across line/method/branch counters; tiered calculation reaches 95.65% lines and 90.91% branches.
+- Coverage improved from the prior journal baseline of 11.8% lines / 8.2% methods / 37.0% branches. Canon040 debt remains warning-level because repository-wide line and method coverage are still below canonical thresholds.
+- `runtime:about` and `lint:container`: RED with the same external Cruding container-definition failure. The Cruding `config/services.yaml` defines `CrudBulkMutationHandlerResolver::$handlers` with a tagged iterator, then later re-registers the whole Resolver resource, overriding that explicit argument; ownership remains Cruding.
+- No Commissioning production behavior was changed and no pre-existing `.gating` deletion was modified.
+- `gating:check` and `gating:canon` are currently unavailable because the pre-existing deleted `.gating/profile/component/commissioning.yaml` is required by both Composer scripts. This run does not restore or stage those pre-existing deletions.
+- `lint:yaml` reaches the same Cruding container-compilation blocker as `runtime:about` / `lint:container`; no Commissioning YAML parsing defect was independently reproduced.
+- Git remote is `origin = git@github.com:smartresponsor/commissioning.git`; current checkpoint branch tracks `origin/checkpoint/pre-origin-sync` and was 0 ahead / 0 behind before this run's commit. Git sync planning reports the worktree dirty solely because of the three pre-existing deletions plus this run's two files.
+
+
+
