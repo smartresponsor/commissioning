@@ -235,5 +235,16 @@ Benchmark against mature ICM products and OCA/Odoo after RC: richer plan modelin
 - `CommissionCalculationRecordService` now has 100% methods / paths / branches / lines in the coverage report.
 
 
+### RC continuation — serializer/validator boundary proof
+
+- Re-read Wave 11 serializer/validator manifest, request DTO constraints, mapping services, controllers, and release-readiness documentation.
+- Confirmed the runtime code already uses Symfony Serializer + Validator rather than placeholder controller DTO construction.
+- Added executable integration-level service tests using the real Symfony `Serializer`, `ObjectNormalizer`, `JsonEncoder`, and attribute-aware Validator.
+- Proven cases: valid JSON -> typed request DTO, malformed JSON -> stable `CommissionApiRequestMappingException`, DTO constraint violations -> property-path messages.
+- Corrected `RELEASE_READINESS_SUMMARY.md` to remove the stale claim that request parsing is placeholder-oriented; the remaining gap is bootable-runtime controller/serializer integration proof.
+- PHPUnit: GREEN, 19 tests / 190 assertions, no notices. PHPStan: GREEN, 0 errors. Composer strict/check-lock validation: GREEN.
+- Fresh coverage: lines 28.83% (305/1058), methods 21.09% (54/256), branches 60.66% (111/183).
+
+
 
 

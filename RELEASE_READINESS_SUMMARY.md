@@ -25,7 +25,7 @@ Current state: approximately 70-75% of initial architectural/business foundation
 ## Known gaps
 
 - Real database execution has not been proven in this artifact wave.
-- Request body parsing is still placeholder-oriented and should be replaced with serializer/validator mapping.
+- Serializer/validator request mapping is implemented; bootable-runtime controller integration proof is still pending.
 - Plan/rate resolvers still use deterministic stub context instead of repository-backed active plan/rate selection.
 - Rule evaluation is present but not fully wired into plan/rate selection.
 - Settlement batching needs stronger duplicate/idempotency handling.
@@ -40,6 +40,6 @@ Suggested next waves:
 
 1. Repository-backed plan/rate/rule resolver.
 2. Idempotency for calculation recording and settlement batching.
-3. Request serializer/validator input mapping.
+3. Bootable-runtime controller/serializer integration proof.
 4. Doctrine schema validation and fixture seed.
 5. Host-app bundle registration proof.
