@@ -245,6 +245,19 @@ Benchmark against mature ICM products and OCA/Odoo after RC: richer plan modelin
 - PHPUnit: GREEN, current shared workspace 29 tests / 255 assertions. PHPStan: GREEN, 0 errors. PHP-CS-Fixer: GREEN.
 - Current shared-workspace coverage is lines 37.43% (396/1058), methods 29.69% (76/256), branches 68.56% (157/229). Concurrent resolver test work remains outside this pass and is not staged here.
 
+### RC continuation — economic-event orchestration and runtime proof
+
+- Added executable orchestration proof for calculation and record flows across attribution, beneficiary, plan, rate, calculation engine, and persistence DTO boundaries.
+- Calculation flow now has regression proof that resolved attribution/plan/rate data and event context reach the calculation basis and engine intact.
+- Record flow now has regression proof that attribution augments beneficiary context, resolved beneficiary is persisted, resolved plan/rate drive the engine, and engine lines/amounts are forwarded to the record service.
+- PHPUnit: GREEN, current shared workspace 31 tests / 282 assertions. PHPStan: GREEN, 0 errors. PHP-CS-Fixer: GREEN.
+- Current shared-workspace coverage: lines 44.71% (473/1058), methods 33.98% (87/256), branches 69.71% (168/241). Concurrent repository-resolver test work remains outside this pass.
+- Runtime blocker status changed externally: `runtime:about` and `lint:container` are now GREEN; Symfony 8.1.6 boots successfully.
+- `lint:yaml`: GREEN for all 7 config YAML files.
+- Doctrine mapping validation: GREEN; mapping files are correct. Migration freshness: GREEN, no migrations to execute.
+- Gating remains the integration blocker: both legacy `.gating/bin/gating` scripts and the parallel Composer `vendor/bin/gating` wiring currently point to executables that are absent from the working tree/vendor install.
+
+
 
 
 
