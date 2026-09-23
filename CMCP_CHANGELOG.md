@@ -222,6 +222,15 @@ Benchmark against mature ICM products and OCA/Odoo after RC: richer plan modelin
 - Composite `composer quality` currently fails only after its GREEN cs/phpstan/test stages because parallel uncommitted Composer changes added `@gate` / `gating/gate`, while `vendor/bin/gating` is not installed in the current vendor tree. Those Composer changes and `PRODUCT_CAPABILITY_AUDIT.adoc` pre-existed this pass and are not modified or staged here.
 - The previously reproduced Cruding-owned container blocker remains outside this Commissioning patch.
 
+### RC continuation — calculation recording transaction/idempotency proof
+
+- Re-read `IDEMPOTENCY_MANIFEST.md`, `WAVE10_IDEMPOTENCY_LAYER_MANIFEST.md`, `RC_DECISION_MATRIX.md`, and `RELEASE_READINESS_SUMMARY.md`.
+- Preserved the documented architectural choice that Commissioning idempotency is enforced through Symfony service/repository workflows rather than introducing a migration-led uniqueness assumption.
+- Added executable proof for `CommissionCalculationRecordService`: duplicate economic events return the persisted commission amount and perform no writes/transaction; new events persist plan/calculation/lines/ledger inside the transaction callback; existing plans are reused without duplicate plan writes.
+- PHPUnit: GREEN, 16 tests / 175 assertions, no notices. PHPStan: GREEN, 0 errors. PHP-CS-Fixer: GREEN.
+- Fresh coverage: lines 27.41% (290/1058), methods 19.92% (51/256), branches 57.83% (96/166). `CommissionCalculationRecordService` is 100% methods/paths/branches/lines.
+
+
 
 ### RC continuation — calculation recording idempotency proof
 
