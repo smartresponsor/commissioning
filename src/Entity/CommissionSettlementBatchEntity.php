@@ -18,7 +18,7 @@ class CommissionSettlementBatchEntity
     #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
-    #[ORM\Column(length: 120, unique: true)]
+    #[ORM\Column(length: 120)]
     private string $batchReference;
 
     #[ORM\Column(enumType: CommissionSettlementBatchStatusEnum::class)]
