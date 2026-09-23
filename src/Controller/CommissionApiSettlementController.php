@@ -69,12 +69,12 @@ final class CommissionApiSettlementController extends AbstractController
         ));
     }
 
-    #[Route('/api/commissioning/settlement/batch/export/{token}', name: 'commissioning_api_settlement_batch_export', methods: ['GET'])]
+    #[Route('/api/commissioning/settlement/batch/export/{batchReference}', name: 'commissioning_api_settlement_batch_export', methods: ['GET'])]
     public function exportBatch(
-        string $token,
+        string $batchReference,
         CommissionSettlementBatchExportServiceInterface $service,
     ): JsonResponse {
-        $result = $service->exportBatch($token);
+        $result = $service->exportBatch($batchReference);
 
         return $this->json(new CommissionApiSettlementBatchExportResponseDTO(
             batchReference: $result->batchReference,

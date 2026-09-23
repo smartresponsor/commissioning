@@ -230,6 +230,15 @@ Benchmark against mature ICM products and OCA/Odoo after RC: richer plan modelin
 - PHPUnit: GREEN, 16 tests / 175 assertions, no notices. PHPStan: GREEN, 0 errors. PHP-CS-Fixer: GREEN.
 - Fresh coverage: lines 27.41% (290/1058), methods 19.92% (51/256), branches 57.83% (96/166). `CommissionCalculationRecordService` is 100% methods/paths/branches/lines.
 
+### RC continuation — API boundary/runtime contract proof
+
+- Found and fixed Canon017 drift: the runtime settlement export route used `{token}`, while API manifests, OpenAPI seed, public API surface, smoke checklist, and export service contract consistently use `{batchReference}`.
+- Updated `CommissionApiSettlementController::exportBatch()` to expose and pass `$batchReference`.
+- Added API boundary regression tests for canonical route parameter naming, empty-body serializer mapping, deserialize failure translation to `CommissionApiRequestMappingException`, and property-qualified validator violations.
+- PHP-CS-Fixer: GREEN. PHPStan: GREEN, 0 errors. PHPUnit: GREEN, current shared workspace 27 tests / 232 assertions.
+- Current shared-workspace coverage is lines 34.69% (367/1058), methods 27.34% (70/256), branches 66.36% (146/220). This coverage total also includes a concurrent uncommitted `CommissionRepositoryBackedResolverTest.php`; that parallel file is not part of this pass.
+
+
 
 
 ### RC continuation — calculation recording idempotency proof
