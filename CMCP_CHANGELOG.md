@@ -223,5 +223,17 @@ Benchmark against mature ICM products and OCA/Odoo after RC: richer plan modelin
 - The previously reproduced Cruding-owned container blocker remains outside this Commissioning patch.
 
 
+### RC continuation — calculation recording idempotency proof
+
+- Re-read the explicit idempotency manifests and RC decision matrix before changing behavior.
+- Preserved the documented architecture: idempotency remains a Symfony service/repository workflow; no migration-led uniqueness assumption was introduced.
+- Added executable proof that duplicate `economicEventReference` requests return the existing amount and perform no plan/calculation/line/ledger writes and no transaction call.
+- Added executable proof that a new economic event records plan (when absent), calculation, calculation lines, and ledger entry inside the transaction callback.
+- Added executable proof that an existing plan is reused without an additional plan save.
+- PHPUnit: GREEN, 16 tests / 175 assertions, no notices. PHPStan: GREEN, 0 errors. PHP-CS-Fixer check: GREEN.
+- Fresh coverage: lines 27.41% (290/1058), methods 19.92% (51/256), branches 57.83% (96/166).
+- `CommissionCalculationRecordService` now has 100% methods / paths / branches / lines in the coverage report.
+
+
 
 
