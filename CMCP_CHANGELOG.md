@@ -238,6 +238,14 @@ Benchmark against mature ICM products and OCA/Odoo after RC: richer plan modelin
 - PHP-CS-Fixer: GREEN. PHPStan: GREEN, 0 errors. PHPUnit: GREEN, current shared workspace 27 tests / 232 assertions.
 - Current shared-workspace coverage is lines 34.69% (367/1058), methods 27.34% (70/256), branches 66.36% (146/220). This coverage total also includes a concurrent uncommitted `CommissionRepositoryBackedResolverTest.php`; that parallel file is not part of this pass.
 
+### RC continuation — settlement export / payout handoff proof
+
+- Added executable proof for `CommissionSettlementBatchExportService`: exported DTO preserves beneficiary/currency/minor amounts and settlement-ready source status, totals entries correctly, marks the Commissioning-owned batch exported, and persists that lifecycle transition.
+- Added fail-fast proof that an unknown batch reference raises before entry reads or writes.
+- PHPUnit: GREEN, current shared workspace 29 tests / 255 assertions. PHPStan: GREEN, 0 errors. PHP-CS-Fixer: GREEN.
+- Current shared-workspace coverage is lines 37.43% (396/1058), methods 29.69% (76/256), branches 68.56% (157/229). Concurrent resolver test work remains outside this pass and is not staged here.
+
+
 
 
 
