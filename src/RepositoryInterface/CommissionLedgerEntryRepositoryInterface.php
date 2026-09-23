@@ -18,5 +18,10 @@ interface CommissionLedgerEntryRepositoryInterface
     /**
      * @return list<CommissionLedgerEntryEntity>
      */
+    public function findSettlementReadyByBeneficiaryReference(string $beneficiaryReference): array;
+
+    /**
+     * @return list<CommissionLedgerEntryEntity>
+     */
     public function findSettlementReady(): array;
 }

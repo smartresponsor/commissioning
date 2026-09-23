@@ -209,5 +209,19 @@ Benchmark against mature ICM products and OCA/Odoo after RC: richer plan modelin
 - `lint:yaml` reaches the same Cruding container-compilation blocker as `runtime:about` / `lint:container`; no Commissioning YAML parsing defect was independently reproduced.
 - Git remote is `origin = git@github.com:smartresponsor/commissioning.git`; current checkpoint branch tracks `origin/checkpoint/pre-origin-sync` and was 0 ahead / 0 behind before this run's commit. Git sync planning reports the worktree dirty solely because of the three pre-existing deletions plus this run's two files.
 
+### RC continuation — settlement workflow correctness
+
+- Re-read Commissioning-owned settlement readiness, settlement batch, idempotency/recording, ledger repository contracts, entities, status enums, and Wave 6 responsibility documentation.
+- Found a Commissioning-owned correctness defect: beneficiary-scoped batch creation queried `Pending` ledger entries while the documented workflow and unfiltered branch require `SettlementReady` entries.
+- Added `findSettlementReadyByBeneficiaryReference()` to the ledger repository contract and Doctrine repository, filtering by beneficiary plus `CommissionLedgerStatusEnum::SettlementReady`.
+- Updated `CommissionSettlementBatchService` to use the settlement-ready beneficiary query; generic/global batching continues to use `findSettlementReady()`.
+- Added executable tests for pending -> settlement-ready transition, beneficiary-scoped batch selection, duplicate exclusion/accounting, and global settlement-ready batching.
+- PHPUnit: GREEN, 13 tests / 139 assertions, no notices.
+- PHP-CS-Fixer check: GREEN. PHPStan: GREEN, 0 errors. Composer strict/check-lock validation: GREEN.
+- Fresh coverage: lines 22.21% (235/1058), methods 16.02% (41/256), branches 52.83% (84/159). `CommissionSettlementBatchService` is 100% methods/lines/branches; `CommissionSettlementReadinessService` is 100% methods/lines/branches.
+- Composite `composer quality` currently fails only after its GREEN cs/phpstan/test stages because parallel uncommitted Composer changes added `@gate` / `gating/gate`, while `vendor/bin/gating` is not installed in the current vendor tree. Those Composer changes and `PRODUCT_CAPABILITY_AUDIT.adoc` pre-existed this pass and are not modified or staged here.
+- The previously reproduced Cruding-owned container blocker remains outside this Commissioning patch.
+
+
 
 

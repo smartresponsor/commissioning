@@ -35,7 +35,7 @@ final class CommissionSettlementBatchService implements CommissionSettlementBatc
             }
 
             $ledgerEntries = null !== $request->beneficiaryReference
-                ? $this->ledgerRepository->findPendingByBeneficiaryReference($request->beneficiaryReference)
+                ? $this->ledgerRepository->findSettlementReadyByBeneficiaryReference($request->beneficiaryReference)
                 : $this->ledgerRepository->findSettlementReady();
 
             $count = 0;

@@ -40,6 +40,17 @@ final class CommissionLedgerEntryRepository extends ServiceEntityRepository impl
     /**
      * @return list<CommissionLedgerEntryEntity>
      */
+    public function findSettlementReadyByBeneficiaryReference(string $beneficiaryReference): array
+    {
+        return array_values($this->findBy([
+            'beneficiaryReference' => $beneficiaryReference,
+            'status' => CommissionLedgerStatusEnum::SettlementReady,
+        ]));
+    }
+
+    /**
+     * @return list<CommissionLedgerEntryEntity>
+     */
     public function findSettlementReady(): array
     {
         return array_values($this->findBy(['status' => CommissionLedgerStatusEnum::SettlementReady]));
