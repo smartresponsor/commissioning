@@ -6,8 +6,14 @@ namespace App\Commissioning\RepositoryInterface;
 
 use App\Commissioning\Entity\CommissionRateEntity;
 
+/**
+ * Defines the Commissioning persistence contract exposed by CommissionRateRepositoryInterface to application services and resolvers.
+ */
 interface CommissionRateRepositoryInterface
 {
+    /**
+     * Persists the supplied Commissioning record through this repository persistence boundary.
+     */
     public function save(CommissionRateEntity $rate): void;
 
     /**

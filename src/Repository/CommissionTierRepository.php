@@ -20,6 +20,9 @@ final class CommissionTierRepository extends ServiceEntityRepository implements 
         parent::__construct($registry, CommissionTierEntity::class);
     }
 
+    /**
+     * Persists the supplied Commissioning record through this repository persistence boundary.
+     */
     public function save(CommissionTierEntity $tier): void
     {
         $this->getEntityManager()->persist($tier);

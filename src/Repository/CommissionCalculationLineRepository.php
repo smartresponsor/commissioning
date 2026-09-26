@@ -19,6 +19,9 @@ final class CommissionCalculationLineRepository extends ServiceEntityRepository 
         parent::__construct($registry, CommissionCalculationLineEntity::class);
     }
 
+    /**
+     * Persists the supplied Commissioning record through this repository persistence boundary.
+     */
     public function save(CommissionCalculationLineEntity $line): void
     {
         $this->getEntityManager()->persist($line);

@@ -12,6 +12,9 @@ use App\Commissioning\RepositoryInterface\CommissionRateRepositoryInterface;
 use App\Commissioning\RepositoryInterface\CommissionTierRepositoryInterface;
 use App\Commissioning\ResolverInterface\CommissionRateResolverInterface;
 
+/**
+ * Resolves canonical Commissioning data through CommissionRateResolver from typed requests and available context.
+ */
 final class CommissionRateResolver implements CommissionRateResolverInterface
 {
     public function __construct(
@@ -20,6 +23,9 @@ final class CommissionRateResolver implements CommissionRateResolverInterface
     ) {
     }
 
+    /**
+     * Resolves canonical Commissioning data from the supplied typed request and available application context.
+     */
     public function resolve(CommissionRateResolutionRequestDTO $request): CommissionRateInputDTO
     {
         $rates = $this->rateRepository->findActiveByPlanCode($request->planCode, $request->currencyCode);

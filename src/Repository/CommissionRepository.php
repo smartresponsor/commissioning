@@ -19,12 +19,18 @@ final class CommissionRepository extends ServiceEntityRepository implements Comm
         parent::__construct($registry, CommissionEntity::class);
     }
 
+    /**
+     * Persists the supplied Commissioning record through this repository persistence boundary.
+     */
     public function save(CommissionEntity $commission): void
     {
         $this->getEntityManager()->persist($commission);
         $this->getEntityManager()->flush();
     }
 
+    /**
+     * Finds Commissioning records matching the supplied criteria for the calling application collaborator.
+     */
     public function findActiveForVendorProduct(string $vendorReference, string $productReference): ?CommissionEntity
     {
         return $this->findOneBy([

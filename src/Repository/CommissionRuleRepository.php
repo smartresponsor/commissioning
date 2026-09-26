@@ -19,6 +19,9 @@ final class CommissionRuleRepository extends ServiceEntityRepository implements 
         parent::__construct($registry, CommissionRuleEntity::class);
     }
 
+    /**
+     * Persists the supplied Commissioning record through this repository persistence boundary.
+     */
     public function save(CommissionRuleEntity $rule): void
     {
         $this->getEntityManager()->persist($rule);

@@ -19,12 +19,18 @@ final class CommissionPlanRepository extends ServiceEntityRepository implements 
         parent::__construct($registry, CommissionPlanEntity::class);
     }
 
+    /**
+     * Persists the supplied Commissioning record through this repository persistence boundary.
+     */
     public function save(CommissionPlanEntity $plan): void
     {
         $this->getEntityManager()->persist($plan);
         $this->getEntityManager()->flush();
     }
 
+    /**
+     * Finds Commissioning records matching the supplied criteria for the calling application collaborator.
+     */
     public function findOneByCode(string $code): ?CommissionPlanEntity
     {
         return $this->findOneBy(['code' => $code]);

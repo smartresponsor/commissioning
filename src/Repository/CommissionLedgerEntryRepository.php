@@ -20,6 +20,9 @@ final class CommissionLedgerEntryRepository extends ServiceEntityRepository impl
         parent::__construct($registry, CommissionLedgerEntryEntity::class);
     }
 
+    /**
+     * Persists the supplied Commissioning record through this repository persistence boundary.
+     */
     public function save(CommissionLedgerEntryEntity $entry): void
     {
         $this->getEntityManager()->persist($entry);

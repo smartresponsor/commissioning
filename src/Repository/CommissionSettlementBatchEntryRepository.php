@@ -21,12 +21,18 @@ final class CommissionSettlementBatchEntryRepository extends ServiceEntityReposi
         parent::__construct($registry, CommissionSettlementBatchEntryEntity::class);
     }
 
+    /**
+     * Persists the supplied Commissioning record through this repository persistence boundary.
+     */
     public function save(CommissionSettlementBatchEntryEntity $entry): void
     {
         $this->getEntityManager()->persist($entry);
         $this->getEntityManager()->flush();
     }
 
+    /**
+     * Performs the existsForBatchAndLedgerEntry operation defined by this typed Commissioning application contract.
+     */
     public function existsForBatchAndLedgerEntry(
         CommissionSettlementBatchEntity $batch,
         CommissionLedgerEntryEntity $ledgerEntry,

@@ -19,6 +19,9 @@ final class CommissionRateRepository extends ServiceEntityRepository implements 
         parent::__construct($registry, CommissionRateEntity::class);
     }
 
+    /**
+     * Persists the supplied Commissioning record through this repository persistence boundary.
+     */
     public function save(CommissionRateEntity $rate): void
     {
         $this->getEntityManager()->persist($rate);

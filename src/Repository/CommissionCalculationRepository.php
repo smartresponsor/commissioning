@@ -19,12 +19,18 @@ final class CommissionCalculationRepository extends ServiceEntityRepository impl
         parent::__construct($registry, CommissionCalculationEntity::class);
     }
 
+    /**
+     * Persists the supplied Commissioning record through this repository persistence boundary.
+     */
     public function save(CommissionCalculationEntity $calculation): void
     {
         $this->getEntityManager()->persist($calculation);
         $this->getEntityManager()->flush();
     }
 
+    /**
+     * Finds Commissioning records matching the supplied criteria for the calling application collaborator.
+     */
     public function findOneByEconomicEventReference(string $economicEventReference): ?CommissionCalculationEntity
     {
         return $this->findOneBy(['economicEventReference' => $economicEventReference]);

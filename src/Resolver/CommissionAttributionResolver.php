@@ -9,8 +9,14 @@ use App\Commissioning\DTO\CommissionAttributionResolutionResultDTO;
 use App\Commissioning\Enum\CommissionAttributionSourceTypeEnum;
 use App\Commissioning\ResolverInterface\CommissionAttributionResolverInterface;
 
+/**
+ * Resolves canonical Commissioning data through CommissionAttributionResolver from typed requests and available context.
+ */
 final class CommissionAttributionResolver implements CommissionAttributionResolverInterface
 {
+    /**
+     * Resolves canonical Commissioning data from the supplied typed request and available application context.
+     */
     public function resolve(CommissionAttributionResolutionRequestDTO $request): CommissionAttributionResolutionResultDTO
     {
         $sourceType = $request->sourceType

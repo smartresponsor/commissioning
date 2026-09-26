@@ -19,12 +19,18 @@ final class CommissionSettlementBatchRepository extends ServiceEntityRepository 
         parent::__construct($registry, CommissionSettlementBatchEntity::class);
     }
 
+    /**
+     * Persists the supplied Commissioning record through this repository persistence boundary.
+     */
     public function save(CommissionSettlementBatchEntity $batch): void
     {
         $this->getEntityManager()->persist($batch);
         $this->getEntityManager()->flush();
     }
 
+    /**
+     * Finds Commissioning records matching the supplied criteria for the calling application collaborator.
+     */
     public function findOneByBatchReference(string $batchReference): ?CommissionSettlementBatchEntity
     {
         return $this->findOneBy(['batchReference' => $batchReference]);
