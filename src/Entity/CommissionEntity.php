@@ -12,7 +12,7 @@ use App\Objecting\EntityTrait\Embeddable\ObjectStateEmbeddableTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CommissionRepository::class)]
-#[ORM\Table(name: 'commission')]
+#[ORM\Table(name: 'commission_commission')]
 #[ORM\Index(columns: ['vendor_reference'], name: 'commission_vendor_reference_idx')]
 #[ORM\Index(columns: ['product_reference'], name: 'commission_product_reference_idx')]
 #[ORM\Index(columns: ['order_reference'], name: 'commission_order_reference_idx')]

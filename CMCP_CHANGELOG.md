@@ -1,5 +1,51 @@
 # CMCP Orchestration Journal
 
+## engine-20260926085811-commissioning-a900c8
+
+### Reconnaissance and baseline
+
+- Workspace resolved through Console MCP as `D:\\PhpstormProjects\\www\\Commissioning`; current branch is `checkpoint/pre-origin-sync`, with pre-existing parallel working-tree changes preserved.
+- Re-read Commissioning governance, architecture/canon manifests, Composer/runtime configuration, current source/test inventory, prior orchestration journal, and the mandatory Objecting, Cruding, Viewing, Interfacing, Gating, and Canonization dependency/contract contour.
+- Canonization material consulted for this pass includes the App/<Component> namespace baseline plus Canon001/003/007/008/017/029/039/040: technical-role-first source layout, exact DTO casing, PSR-4 identity, explicit dependency integrity, runtime/documentation parity, mandatory PHP quality tooling, executable PHPUnit tooling, and independent coverage thresholds.
+- Target mapping remains `commissioning/commission` -> `App\\Commissioning\\` with `Commission*` business types; no `src/Domain` or Port/Adapter layout; generic CRUD remains Cruding-owned; presentation and shell concerns remain Viewing/Interfacing-owned; Objecting owns system/entity field contracts.
+- Current RC diagnostic reports zero canon issues. Runtime/package baseline from the current journal is GREEN; unrelated dirty paths are preserved and are not absorbed by this pass.
+
+### RC-critical workstream
+
+- Close a remaining executable-proof gap in Commissioning-owned rule evaluation semantics. The evaluator drives commission eligibility/plan logic and is money-sensitive, but lacked focused regression proof for every supported operator and fail-fast behavior.
+
+### Growth workstream (post-RC)
+
+- Effective-dated/versioned plans, historical scenario testing, richer calculation lineage, retroactive recalculation, approval/dispute workflows, and operator/payee UX remain post-RC maturity work.
+
+### Material implementation
+
+- Added `CommissionRuleEvaluationServiceTest` with data-driven proof for `always`, equality/inequality, numeric boundaries, comma-delimited membership trimming, null membership input, and unsupported-operator fail-fast behavior.
+
+### Gates to run
+
+- PHP lint for changed PHP; PHPUnit; PHPStan; Composer strict/check-lock validation; repository quality; Symfony runtime/container/YAML; Doctrine validation; Gating/Canonization where executable.
+
+### Verification and repair result
+
+- Composer strict/check-lock validation: GREEN.
+- PHP-CS-Fixer: GREEN, 0 pending files. PHPStan: GREEN, 0 errors. PHPUnit: GREEN, 43 tests / 294 assertions.
+- Repaired current transaction-boundary test drift: two pre-existing dirty test files still mocked the former service transaction interface while production services had already moved to the repository transaction contract. They now exercise `CommissionTransactionRepositoryInterface`; the overlapping files remain unstaged to avoid absorbing parallel work.
+- Symfony runtime: GREEN on Symfony 8.1.7 / PHP 8.4.13. Container lint: GREEN. YAML lint: GREEN for 7 files. Doctrine mapping: GREEN. Migrations: current.
+- Coverage evidence refreshed: lines 45.47% (482/1060), methods 33.46% (87/260), branches 71.53% (201/281). Canon040 remains HIGH_TEST_DEBT on line/method coverage; branch coverage is above the 70% target.
+- Canon055 human-facing package-description drift was corrected in both Composer manifests in the working tree; those manifests were already dirty from parallel work and are not safe to stage wholesale in this pass.
+- Canon047 Doctrine-manager ownership was repaired in the working tree by delegating the legacy transaction service to the repository transaction contract. The required repository/interface files are pre-existing untracked parallel work, so this repair cannot be published independently without commingling ownership.
+- Doctrine table-prefix drift on `CommissionEntity` was repaired from `commission` to `commission_commission`; mapping remains GREEN and Gating database-prefix enforcement now passes.
+- `gating:check`: GREEN, 9 rules / 0 failures / 0 warnings / 0 skips after reconstructing an executable consumer profile from the current Gating profile contract.
+- Full `gating:canon` remains RED on two hard integration findings: Canon001 flags `Calculator/CommissionCalculationEngine` and its interface even though the normative Canon001 text explicitly states the technical-role catalog is open and an unknown role root is an escalation candidate rather than automatic evidence; this is a textual-canon/Gating implementation conflict requiring owner resolution before a structural API move. Canon052 correctly detects that the pre-existing consumer `.gating/` contains a copied executable/policy tree although current Canon052 requires artifact-only consumer state. Removing that copied tree is destructive and therefore forbidden by this task envelope.
+- Warning debt remains: Canon031 PHPDoc coverage, Canon040 line/method coverage, and Canon042 behavioral/UI coverage evidence. No browser/mobile surface was changed in this pass, so no new visual artifact is applicable.
+
+### Current RC checkpoint
+
+- Application/runtime correctness gates are GREEN.
+- Canon047 and database-prefix hard failures are resolved in the live worktree.
+- RC is not factually complete because Canon052 requires destructive cleanup forbidden by this run, and Canon001 currently conflicts with the normative open-role-root rule rather than providing a safe unambiguous rename directive.
+
 ## engine-20260912083052-commissioning-3707bd
 
 ### Iteration 1 — reconnaissance and baseline
