@@ -21,8 +21,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
+/**
+ * Exposes Commissioning HTTP behavior through CommissionApiSettlementController while delegating business work to typed services.
+ */
 final class CommissionApiSettlementController extends AbstractController
 {
+    /**
+     * Applies the requested Commissioning lifecycle transition and returns the resulting application state.
+     */
     #[Route('/api/commissioning/ledger/settlement/ready', name: 'commissioning_api_settlement_ready', methods: ['POST'])]
     public function markSettlementReady(
         Request $request,
@@ -44,6 +50,9 @@ final class CommissionApiSettlementController extends AbstractController
         return $this->json(new CommissionApiSettlementReadyResponseDTO($result->markedCount));
     }
 
+    /**
+     * Performs the createBatch operation defined by this typed Commissioning application contract.
+     */
     #[Route('/api/commissioning/settlement/batch', name: 'commissioning_api_settlement_batch_create', methods: ['POST'])]
     public function createBatch(
         Request $request,
@@ -69,6 +78,9 @@ final class CommissionApiSettlementController extends AbstractController
         ));
     }
 
+    /**
+     * Exports canonical Commissioning settlement data through the typed application handoff contract.
+     */
     #[Route('/api/commissioning/settlement/batch/export/{batchReference}', name: 'commissioning_api_settlement_batch_export', methods: ['GET'])]
     public function exportBatch(
         string $batchReference,

@@ -6,6 +6,9 @@ namespace App\Commissioning\EventSubscriber;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+/**
+ * Subscribes CommissionWorkflowSubscriber to Commissioning workflow events while keeping framework integration explicit.
+ */
 final class CommissionWorkflowSubscriber implements EventSubscriberInterface
 {
     /**

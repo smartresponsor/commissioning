@@ -11,8 +11,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
+/**
+ * Exposes Commissioning HTTP behavior through CommissionEconomicEventCalculationController while delegating business work to typed services.
+ */
 final class CommissionEconomicEventCalculationController extends AbstractController
 {
+    /**
+     * Performs the preview operation defined by this typed Commissioning application contract.
+     */
     #[Route('/commissioning/economic/event/preview', name: 'commissioning_economic_event_preview', methods: ['GET'])]
     public function preview(
         CommissionDemoRouteGuardServiceInterface $demoRouteGuard,

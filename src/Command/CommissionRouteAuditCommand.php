@@ -15,6 +15,9 @@ use Symfony\Component\Routing\RouterInterface;
     name: 'commissioning:routes:audit',
     description: 'Lists Commissioning routes registered in the Symfony router.',
 )]
+/**
+ * Exposes the Commissioning console operation implemented by CommissionRouteAuditCommand for deterministic operational workflows.
+ */
 final class CommissionRouteAuditCommand extends Command
 {
     public function __construct(private readonly RouterInterface $router)
@@ -22,6 +25,9 @@ final class CommissionRouteAuditCommand extends Command
         parent::__construct();
     }
 
+    /**
+     * Executes this Commissioning console operation and reports the resulting deterministic command status.
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);

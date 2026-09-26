@@ -10,6 +10,9 @@ use App\Commissioning\DTO\CommissionCalculationEngineResultDTO;
 use App\Commissioning\DTO\CommissionRateInputDTO;
 use App\Commissioning\ValueObject\CommissionBasisValueObject;
 
+/**
+ * Calculates canonical Commissioning amounts through CommissionCalculationEngine using typed basis and rate inputs.
+ */
 final class CommissionCalculationEngine implements CommissionCalculationEngineInterface
 {
     /**
@@ -19,6 +22,9 @@ final class CommissionCalculationEngine implements CommissionCalculationEngineIn
     {
     }
 
+    /**
+     * Calculates the Commissioning result from the supplied typed request and configured calculation inputs.
+     */
     public function calculate(
         CommissionBasisValueObject $basis,
         CommissionRateInputDTO $rate,

@@ -9,6 +9,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
+/**
+ * Configures the Commissioning Symfony dependency-injection surface represented by CommissioningExtension for host applications.
+ */
 final class CommissioningExtension extends Extension
 {
     /**

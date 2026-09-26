@@ -18,8 +18,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
+/**
+ * Exposes Commissioning HTTP behavior through CommissionApiCalculationController while delegating business work to typed services.
+ */
 final class CommissionApiCalculationController extends AbstractController
 {
+    /**
+     * Performs the preview operation defined by this typed Commissioning application contract.
+     */
     #[Route('/api/commissioning/calculation/preview', name: 'commissioning_api_calculation_preview', methods: ['POST'])]
     public function preview(
         Request $request,
@@ -47,6 +53,9 @@ final class CommissionApiCalculationController extends AbstractController
         ));
     }
 
+    /**
+     * Performs the record operation defined by this typed Commissioning application contract.
+     */
     #[Route('/api/commissioning/calculation', name: 'commissioning_api_calculation_record', methods: ['POST'])]
     public function record(
         Request $request,

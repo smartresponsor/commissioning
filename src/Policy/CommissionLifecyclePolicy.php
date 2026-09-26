@@ -24,6 +24,9 @@ final class CommissionLifecyclePolicy
         'cancelled' => [],
     ];
 
+    /**
+     * Reports whether the requested Commissioning state transition satisfies the canonical lifecycle policy.
+     */
     public static function canTransition(string $from, string $to): bool
     {
         $from = strtolower(trim($from));
@@ -32,6 +35,9 @@ final class CommissionLifecyclePolicy
         return $from === $to || in_array($to, self::ALLOWED[$from] ?? [], true);
     }
 
+    /**
+     * Asserts the Commissioning application invariant represented by this contract and fails explicitly otherwise.
+     */
     public static function assertCanTransition(string $from, string $to): void
     {
         if (!self::canTransition($from, $to)) {

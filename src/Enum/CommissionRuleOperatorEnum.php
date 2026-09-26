@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Commissioning\Enum;
 
+/**
+ * Enumerates the canonical Commissioning values represented by CommissionRuleOperatorEnum across typed application boundaries.
+ */
 enum CommissionRuleOperatorEnum: string
 {
     case Always = 'always';

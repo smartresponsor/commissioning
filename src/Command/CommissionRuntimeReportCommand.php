@@ -15,6 +15,9 @@ use Symfony\Component\Console\Output\OutputInterface;
     name: 'commissioning:runtime:report',
     description: 'Prints a machine-readable JSON Commissioning runtime report.',
 )]
+/**
+ * Exposes the Commissioning console operation implemented by CommissionRuntimeReportCommand for deterministic operational workflows.
+ */
 final class CommissionRuntimeReportCommand extends Command
 {
     public function __construct(private readonly CommissionRuntimeAuditServiceInterface $runtimeAuditService)
@@ -22,6 +25,9 @@ final class CommissionRuntimeReportCommand extends Command
         parent::__construct();
     }
 
+    /**
+     * Executes this Commissioning console operation and reports the resulting deterministic command status.
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $report = $this->runtimeAuditService->audit();

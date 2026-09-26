@@ -19,8 +19,14 @@ use App\Commissioning\Enum\CommissionCalculationLineTypeEnum;
 use App\Commissioning\Enum\CommissionRateTypeEnum;
 use Doctrine\Persistence\ObjectManager;
 
+/**
+ * Defines the Commissioning application responsibility represented by CommissioningDemoFixtures within its canonical typed layer.
+ */
 final class CommissioningDemoFixtures
 {
+    /**
+     * Performs the load operation defined by this typed Commissioning application contract.
+     */
     public function load(ObjectManager $manager): void
     {
         $plans = [];

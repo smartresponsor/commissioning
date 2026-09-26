@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Commissioning\Enum;
 
+/**
+ * Enumerates the canonical Commissioning values represented by CommissionCalculationLineTypeEnum across typed application boundaries.
+ */
 enum CommissionCalculationLineTypeEnum: string
 {
     case Base = 'base';

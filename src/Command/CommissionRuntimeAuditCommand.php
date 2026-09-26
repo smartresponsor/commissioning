@@ -15,6 +15,9 @@ use Symfony\Component\Console\Style\SymfonyStyle;
     name: 'commissioning:runtime:audit',
     description: 'Runs read-only Commissioning runtime diagnostics.',
 )]
+/**
+ * Exposes the Commissioning console operation implemented by CommissionRuntimeAuditCommand for deterministic operational workflows.
+ */
 final class CommissionRuntimeAuditCommand extends Command
 {
     public function __construct(private readonly CommissionRuntimeAuditServiceInterface $runtimeAuditService)
@@ -22,6 +25,9 @@ final class CommissionRuntimeAuditCommand extends Command
         parent::__construct();
     }
 
+    /**
+     * Executes this Commissioning console operation and reports the resulting deterministic command status.
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $report = $this->runtimeAuditService->audit();

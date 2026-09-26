@@ -15,6 +15,9 @@ use Symfony\Component\Console\Style\SymfonyStyle;
     name: 'commissioning:dev:seed',
     description: 'Seeds default Commissioning development data.',
 )]
+/**
+ * Exposes the Commissioning console operation implemented by CommissionDevelopmentSeedCommand for deterministic operational workflows.
+ */
 final class CommissionDevelopmentSeedCommand extends Command
 {
     public function __construct(private readonly CommissionDevelopmentSeedServiceInterface $seedService)
@@ -22,6 +25,9 @@ final class CommissionDevelopmentSeedCommand extends Command
         parent::__construct();
     }
 
+    /**
+     * Executes this Commissioning console operation and reports the resulting deterministic command status.
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
