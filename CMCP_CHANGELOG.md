@@ -52,6 +52,21 @@
 - Created signed commit `bca85c3` (`Harden Commissioning RC rule evaluation`) containing only ownership-safe paths from this pass: `CMCP_CHANGELOG.md`, `src/Entity/CommissionEntity.php`, and `tests/CommissionRuleEvaluationServiceTest.php`.
 - Published `checkpoint/pre-origin-sync` successfully to its configured upstream. Overlapping pre-existing dirty files remain intentionally unstaged/uncommitted rather than being silently absorbed.
 
+### Canon remediation completion — 2026-09-26
+
+- Canon001 executable/text drift was repaired at the owner in Gating and published as signed commit `076791b`; `Calculator` and `CalculatorInterface` are now legitimate technical-role roots with regression coverage.
+- Canon052 consumer integration is canonical: Commissioning executes Composer-installed `vendor/bin/gating`, active consumer configuration lives under `config/gating/`, and the former copied local Gating tree is preserved only as ignored historical artifact state.
+- Canon042 is GREEN from repository-owned behavioral evidence: functional 4/4, behavioral 2/2, UI 0/0 because Commissioning exposes no HTML/template UI surface, and critical 2/2.
+- Added deterministic Symfony kernel behavioral coverage for malformed JSON and HTTP method contracts, plus test-environment kernel configuration and an evidence generator for `var/coverage/behavioral-ui.json`.
+- Expanded executable coverage with entity/lifecycle, typed contract, controller success-path, core service/resolver, command/runtime audit, schema-readiness, and development-seed tests.
+- Canon040 is GREEN with fresh PHPUnit/php-code-coverage evidence: lines 89.43% (948/1060), methods 80.38% (209/260), branches 89.79% (422/470).
+- Canon031 is GREEN after semantic role-aware PHPDoc completion across canonical production types: classes 154/168 (91.7%), contract methods 141/157 (89.8%), both above the 70% threshold.
+- Final `gating:canon`: GREEN, 71 rules / 0 failures / 0 warnings / 0 suppressions / 8 explicit skips.
+- Final `composer quality`: GREEN. PHPUnit: 76 tests / 529 assertions, no notices. PHPStan: 0 errors. PHP-CS-Fixer: 0 pending files.
+- Composer strict/check-lock validation: GREEN. Symfony 8.1.7 / PHP 8.4.13 runtime: GREEN. Container lint: GREEN. YAML lint: GREEN (10 files). Doctrine mapping: GREEN. Migrations: current.
+- Behavioral/UI artifacts are evidence-only; no user-visible browser/mobile UI was changed, so screenshot evidence is not applicable.
+- During this continuation the shared branch advanced independently through commits `8e97e01` (canonical Gating configuration) and `25e9843` (ignore local Gating artifacts). Their work is preserved; Git integration for this continuation stages only ownership-safe paths and excludes files that were already dirty before the canon pass.
+
 ## engine-20260912083052-commissioning-3707bd
 
 ### Iteration 1 — reconnaissance and baseline
