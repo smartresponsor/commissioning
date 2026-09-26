@@ -7,6 +7,9 @@ namespace App\Commissioning\Entity;
 use App\Commissioning\Repository\CommissionTierRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Represents persisted Commissioning state for CommissionTierEntity records and their application lifecycle.
+ */
 #[ORM\Entity(repositoryClass: CommissionTierRepository::class)]
 #[ORM\Table(name: 'commission_tier')]
 #[ORM\Index(columns: ['minimum_minor_amount'], name: 'commission_tier_minimum_idx')]
@@ -52,6 +55,9 @@ class CommissionTierEntity
         return $this->maximumMinorAmount;
     }
 
+    /**
+     * Evaluates whether the supplied Commissioning context satisfies the configured rule contract.
+     */
     public function matches(int $basisMinorAmount): bool
     {
         if ($basisMinorAmount < $this->minimumMinorAmount) {

@@ -8,6 +8,9 @@ use App\Commissioning\Enum\CommissionBeneficiaryTypeEnum;
 use App\Commissioning\Repository\CommissionBeneficiaryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Represents persisted Commissioning state for CommissionBeneficiaryEntity records and their application lifecycle.
+ */
 #[ORM\Entity(repositoryClass: CommissionBeneficiaryRepository::class)]
 #[ORM\Table(name: 'commission_beneficiary')]
 #[ORM\UniqueConstraint(name: 'commission_beneficiary_reference_unique', columns: ['beneficiary_type', 'beneficiary_reference'])]

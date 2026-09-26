@@ -8,6 +8,9 @@ use App\Commissioning\Enum\CommissionAttributionSourceTypeEnum;
 use App\Commissioning\Repository\CommissionAttributionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Represents persisted Commissioning state for CommissionAttributionEntity records and their application lifecycle.
+ */
 #[ORM\Entity(repositoryClass: CommissionAttributionRepository::class)]
 #[ORM\Table(name: 'commission_attribution')]
 #[ORM\Index(columns: ['economic_event_reference'], name: 'commission_attribution_event_idx')]

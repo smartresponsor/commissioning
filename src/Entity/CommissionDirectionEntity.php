@@ -11,6 +11,9 @@ use App\Objecting\EntityTrait\Embeddable\ObjectIdentityEmbeddableTrait;
 use App\Objecting\EntityTrait\Embeddable\ObjectStateEmbeddableTrait;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Represents persisted Commissioning state for CommissionDirectionEntity records and their application lifecycle.
+ */
 #[ORM\Entity(repositoryClass: CommissionDirectionRepository::class)]
 #[ORM\Table(name: 'commission_direction')]
 #[ORM\UniqueConstraint(name: 'commission_direction_code_unique', columns: ['code'])]
@@ -102,46 +105,73 @@ class CommissionDirectionEntity implements CommissionDirectionEntityInterface
         return $this->nameEntity;
     }
 
+    /**
+     * Performs the targetsShipment operation defined by this typed Commissioning application contract.
+     */
     public function targetsShipment(): bool
     {
         return $this->toShipment;
     }
 
+    /**
+     * Performs the targetsPayment operation defined by this typed Commissioning application contract.
+     */
     public function targetsPayment(): bool
     {
         return $this->toPayment;
     }
 
+    /**
+     * Performs the targetsPrice operation defined by this typed Commissioning application contract.
+     */
     public function targetsPrice(): bool
     {
         return $this->toPrice;
     }
 
+    /**
+     * Performs the targetsDate operation defined by this typed Commissioning application contract.
+     */
     public function targetsDate(): bool
     {
         return $this->toDate;
     }
 
+    /**
+     * Performs the targetsPlatformReward operation defined by this typed Commissioning application contract.
+     */
     public function targetsPlatformReward(): bool
     {
         return $this->toPlatformReward;
     }
 
+    /**
+     * Performs the targetsStorage operation defined by this typed Commissioning application contract.
+     */
     public function targetsStorage(): bool
     {
         return $this->toStorage;
     }
 
+    /**
+     * Performs the targetsProjectType operation defined by this typed Commissioning application contract.
+     */
     public function targetsProjectType(): bool
     {
         return $this->toProjectType;
     }
 
+    /**
+     * Performs the targetsOrderTotal operation defined by this typed Commissioning application contract.
+     */
     public function targetsOrderTotal(): bool
     {
         return $this->toOrderTotal;
     }
 
+    /**
+     * Performs the targetsProductCategory operation defined by this typed Commissioning application contract.
+     */
     public function targetsProductCategory(): bool
     {
         return $this->toProductCategory;

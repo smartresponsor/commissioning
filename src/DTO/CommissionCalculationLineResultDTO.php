@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Commissioning\DTO;
 
+/**
+ * Carries typed Commissioning data for the CommissionCalculationLineResultDTO application boundary and its callers.
+ */
 final readonly class CommissionCalculationLineResultDTO
 {
     public function __construct(

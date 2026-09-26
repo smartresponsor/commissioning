@@ -11,6 +11,9 @@ use App\Objecting\EntityTrait\Embeddable\ObjectIdentityEmbeddableTrait;
 use App\Objecting\EntityTrait\Embeddable\ObjectStateEmbeddableTrait;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Represents persisted Commissioning state for CommissionTypeEntity records and their application lifecycle.
+ */
 #[ORM\Entity(repositoryClass: CommissionTypeRepository::class)]
 #[ORM\Table(name: 'commission_type')]
 #[ORM\UniqueConstraint(name: 'commission_type_code_unique', columns: ['code'])]

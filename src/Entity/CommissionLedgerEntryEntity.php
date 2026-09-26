@@ -8,6 +8,9 @@ use App\Commissioning\Enum\CommissionLedgerStatusEnum;
 use App\Commissioning\Repository\CommissionLedgerEntryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Represents persisted Commissioning state for CommissionLedgerEntryEntity records and their application lifecycle.
+ */
 #[ORM\Entity(repositoryClass: CommissionLedgerEntryRepository::class)]
 #[ORM\Table(name: 'commission_ledger_entry')]
 #[ORM\Index(columns: ['beneficiary_reference'], name: 'commission_ledger_beneficiary_idx')]
@@ -78,16 +81,25 @@ class CommissionLedgerEntryEntity
         return $this->status;
     }
 
+    /**
+     * Applies the requested Commissioning lifecycle transition and returns the resulting application state.
+     */
     public function markSettlementReady(): void
     {
         $this->status = CommissionLedgerStatusEnum::SettlementReady;
     }
 
+    /**
+     * Applies the requested Commissioning lifecycle transition and returns the resulting application state.
+     */
     public function markSettled(): void
     {
         $this->status = CommissionLedgerStatusEnum::Settled;
     }
 
+    /**
+     * Performs the reverse operation defined by this typed Commissioning application contract.
+     */
     public function reverse(): void
     {
         $this->status = CommissionLedgerStatusEnum::Reversed;

@@ -8,6 +8,9 @@ use App\Commissioning\Enum\CommissionRateTypeEnum;
 use App\Commissioning\Repository\CommissionRateRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Represents persisted Commissioning state for CommissionRateEntity records and their application lifecycle.
+ */
 #[ORM\Entity(repositoryClass: CommissionRateRepository::class)]
 #[ORM\Table(name: 'commission_rate')]
 #[ORM\Index(columns: ['type'], name: 'commission_rate_type_idx')]

@@ -8,6 +8,9 @@ use App\Commissioning\Enum\CommissionRuleOperatorEnum;
 use App\Commissioning\Repository\CommissionRuleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Represents persisted Commissioning state for CommissionRuleEntity records and their application lifecycle.
+ */
 #[ORM\Entity(repositoryClass: CommissionRuleRepository::class)]
 #[ORM\Table(name: 'commission_rule')]
 #[ORM\Index(columns: ['rule_key'], name: 'commission_rule_key_idx')]

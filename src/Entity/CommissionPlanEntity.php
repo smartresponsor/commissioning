@@ -7,6 +7,9 @@ namespace App\Commissioning\Entity;
 use App\Commissioning\Repository\CommissionPlanRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Represents persisted Commissioning state for CommissionPlanEntity records and their application lifecycle.
+ */
 #[ORM\Entity(repositoryClass: CommissionPlanRepository::class)]
 #[ORM\Table(name: 'commission_plan')]
 #[ORM\UniqueConstraint(name: 'commission_plan_code_unique', columns: ['code'])]
@@ -56,6 +59,9 @@ class CommissionPlanEntity
         return $this->active;
     }
 
+    /**
+     * Performs the deactivate operation defined by this typed Commissioning application contract.
+     */
     public function deactivate(): void
     {
         $this->active = false;

@@ -8,6 +8,9 @@ use App\Commissioning\Enum\CommissionCalculationLineTypeEnum;
 use App\Commissioning\Repository\CommissionCalculationLineRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Represents persisted Commissioning state for CommissionCalculationLineEntity records and their application lifecycle.
+ */
 #[ORM\Entity(repositoryClass: CommissionCalculationLineRepository::class)]
 #[ORM\Table(name: 'commission_calculation_line')]
 class CommissionCalculationLineEntity

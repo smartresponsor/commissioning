@@ -6,6 +6,9 @@ namespace App\Commissioning\DTO;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
+/**
+ * Carries typed Commissioning data for the CommissionApiSettlementReadyRequestDTO application boundary and its callers.
+ */
 final readonly class CommissionApiSettlementReadyRequestDTO
 {
     public function __construct(

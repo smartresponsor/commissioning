@@ -7,6 +7,9 @@ namespace App\Commissioning\Entity;
 use App\Commissioning\Repository\CommissionSettlementBatchEntryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Represents persisted Commissioning state for CommissionSettlementBatchEntryEntity records and their application lifecycle.
+ */
 #[ORM\Entity(repositoryClass: CommissionSettlementBatchEntryRepository::class)]
 #[ORM\Table(name: 'commission_settlement_batch_entry')]
 #[ORM\UniqueConstraint(name: 'commission_settlement_batch_entry_unique', columns: ['batch_id', 'ledger_entry_id'])]

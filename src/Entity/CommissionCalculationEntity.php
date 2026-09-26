@@ -8,6 +8,9 @@ use App\Commissioning\Enum\CommissionCalculationStatusEnum;
 use App\Commissioning\Repository\CommissionCalculationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Represents persisted Commissioning state for CommissionCalculationEntity records and their application lifecycle.
+ */
 #[ORM\Entity(repositoryClass: CommissionCalculationRepository::class)]
 #[ORM\Table(name: 'commission_calculation')]
 #[ORM\Index(columns: ['economic_event_reference'], name: 'commission_calculation_event_idx')]
