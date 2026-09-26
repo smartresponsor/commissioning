@@ -7,6 +7,9 @@ namespace App\Commissioning\Service;
 use App\Commissioning\Enum\CommissionRuleOperatorEnum;
 use App\Commissioning\ServiceInterface\CommissionRuleEvaluationServiceInterface;
 
+/**
+ * Coordinates Commissioning application behavior implemented by CommissionRuleEvaluationService across typed collaborators and boundaries.
+ */
 final class CommissionRuleEvaluationService implements CommissionRuleEvaluationServiceInterface
 {
     /**

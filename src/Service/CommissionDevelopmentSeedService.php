@@ -16,6 +16,9 @@ use App\Commissioning\RepositoryInterface\CommissionRuleRepositoryInterface;
 use App\Commissioning\RepositoryInterface\CommissionTierRepositoryInterface;
 use App\Commissioning\ServiceInterface\CommissionDevelopmentSeedServiceInterface;
 
+/**
+ * Coordinates Commissioning application behavior implemented by CommissionDevelopmentSeedService across typed collaborators and boundaries.
+ */
 final class CommissionDevelopmentSeedService implements CommissionDevelopmentSeedServiceInterface
 {
     public function __construct(

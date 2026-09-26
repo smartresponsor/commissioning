@@ -11,8 +11,14 @@ use App\Commissioning\DTO\CommissionEconomicEventDTO;
 use App\Commissioning\DTO\CommissionSettlementBatchCreateRequestDTO;
 use App\Commissioning\ServiceInterface\CommissionApiRequestMappingServiceInterface;
 
+/**
+ * Coordinates Commissioning application behavior implemented by CommissionApiRequestMappingService across typed collaborators and boundaries.
+ */
 final class CommissionApiRequestMappingService implements CommissionApiRequestMappingServiceInterface
 {
+    /**
+     * Maps the supplied external Commissioning request into its canonical typed application representation.
+     */
     public function mapCalculationRequest(CommissionApiCalculationRequestDTO $request): CommissionEconomicEventDTO
     {
         return new CommissionEconomicEventDTO(
@@ -26,11 +32,17 @@ final class CommissionApiRequestMappingService implements CommissionApiRequestMa
         );
     }
 
+    /**
+     * Maps the supplied external Commissioning request into its canonical typed application representation.
+     */
     public function mapSettlementReadyRequest(CommissionApiSettlementReadyRequestDTO $request): string
     {
         return $request->beneficiaryReference;
     }
 
+    /**
+     * Maps the supplied external Commissioning request into its canonical typed application representation.
+     */
     public function mapSettlementBatchCreateRequest(
         CommissionApiSettlementBatchCreateRequestDTO $request,
     ): CommissionSettlementBatchCreateRequestDTO {

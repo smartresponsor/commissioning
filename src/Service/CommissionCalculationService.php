@@ -13,12 +13,18 @@ use App\Commissioning\ServiceInterface\CommissionCalculationServiceInterface;
 use App\Commissioning\ValueObject\CommissionBasisValueObject;
 use App\Commissioning\ValueObject\CommissionMoneyValueObject;
 
+/**
+ * Coordinates Commissioning application behavior implemented by CommissionCalculationService across typed collaborators and boundaries.
+ */
 final class CommissionCalculationService implements CommissionCalculationServiceInterface
 {
     public function __construct(private readonly CommissionCalculationEngineInterface $engine)
     {
     }
 
+    /**
+     * Calculates the Commissioning result from the supplied typed request and configured calculation inputs.
+     */
     public function calculate(CommissionCalculationRequestDTO $request): CommissionCalculationResultDTO
     {
         $basis = new CommissionBasisValueObject(

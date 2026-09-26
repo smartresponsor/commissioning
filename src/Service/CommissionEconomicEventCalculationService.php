@@ -17,6 +17,9 @@ use App\Commissioning\ServiceInterface\CommissionEconomicEventCalculationService
 use App\Commissioning\ValueObject\CommissionBasisValueObject;
 use App\Commissioning\ValueObject\CommissionMoneyValueObject;
 
+/**
+ * Coordinates Commissioning application behavior implemented by CommissionEconomicEventCalculationService across typed collaborators and boundaries.
+ */
 final class CommissionEconomicEventCalculationService implements CommissionEconomicEventCalculationServiceInterface
 {
     public function __construct(
@@ -27,6 +30,9 @@ final class CommissionEconomicEventCalculationService implements CommissionEcono
     ) {
     }
 
+    /**
+     * Calculates the Commissioning result from the supplied typed request and configured calculation inputs.
+     */
     public function calculateForEconomicEvent(CommissionEconomicEventDTO $event): CommissionCalculationResultDTO
     {
         $attribution = $this->attributionResolver->resolve(new CommissionAttributionResolutionRequestDTO(

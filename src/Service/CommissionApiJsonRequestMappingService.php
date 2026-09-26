@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+/**
+ * Coordinates Commissioning application behavior implemented by CommissionApiJsonRequestMappingService across typed collaborators and boundaries.
+ */
 final class CommissionApiJsonRequestMappingService implements CommissionApiJsonRequestMappingServiceInterface
 {
     public function __construct(
@@ -18,6 +21,9 @@ final class CommissionApiJsonRequestMappingService implements CommissionApiJsonR
     ) {
     }
 
+    /**
+     * Maps the supplied external Commissioning request into its canonical typed application representation.
+     */
     public function map(Request $request, string $dtoClass): object
     {
         $payload = trim($request->getContent());

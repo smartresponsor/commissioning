@@ -10,6 +10,9 @@ use App\Commissioning\RepositoryInterface\CommissionSettlementBatchEntryReposito
 use App\Commissioning\RepositoryInterface\CommissionSettlementBatchRepositoryInterface;
 use App\Commissioning\ServiceInterface\CommissionSettlementBatchExportServiceInterface;
 
+/**
+ * Coordinates Commissioning application behavior implemented by CommissionSettlementBatchExportService across typed collaborators and boundaries.
+ */
 final class CommissionSettlementBatchExportService implements CommissionSettlementBatchExportServiceInterface
 {
     public function __construct(
@@ -18,6 +21,9 @@ final class CommissionSettlementBatchExportService implements CommissionSettleme
     ) {
     }
 
+    /**
+     * Exports canonical Commissioning settlement data through the typed application handoff contract.
+     */
     public function exportBatch(string $batchReference): CommissionSettlementBatchExportDTO
     {
         $batch = $this->batchRepository->findOneByBatchReference($batchReference);

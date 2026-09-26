@@ -8,6 +8,9 @@ use App\Commissioning\RepositoryInterface\CommissionRuleRepositoryInterface;
 use App\Commissioning\ServiceInterface\CommissionRuleEvaluationServiceInterface;
 use App\Commissioning\ServiceInterface\CommissionRuleSetEvaluationServiceInterface;
 
+/**
+ * Coordinates Commissioning application behavior implemented by CommissionRuleSetEvaluationService across typed collaborators and boundaries.
+ */
 final class CommissionRuleSetEvaluationService implements CommissionRuleSetEvaluationServiceInterface
 {
     public function __construct(

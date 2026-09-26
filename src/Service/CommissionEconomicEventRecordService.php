@@ -21,6 +21,9 @@ use App\Commissioning\ValueObject\CommissionBasisValueObject;
 use App\Commissioning\ValueObject\CommissionMoneyValueObject;
 use App\Commissioning\ValueObject\CommissionRuleContextValueObject;
 
+/**
+ * Coordinates Commissioning application behavior implemented by CommissionEconomicEventRecordService across typed collaborators and boundaries.
+ */
 final class CommissionEconomicEventRecordService implements CommissionEconomicEventRecordServiceInterface
 {
     public function __construct(
@@ -33,6 +36,9 @@ final class CommissionEconomicEventRecordService implements CommissionEconomicEv
     ) {
     }
 
+    /**
+     * Performs the recordEconomicEvent operation defined by this typed Commissioning application contract.
+     */
     public function recordEconomicEvent(CommissionEconomicEventDTO $event): CommissionRecordCalculationResultDTO
     {
         $attribution = $this->attributionResolver->resolve(new CommissionAttributionResolutionRequestDTO(
