@@ -36,15 +36,16 @@
 - Canon055 human-facing package-description drift was corrected in both Composer manifests in the working tree; those manifests were already dirty from parallel work and are not safe to stage wholesale in this pass.
 - Canon047 Doctrine-manager ownership was repaired in the working tree by delegating the legacy transaction service to the repository transaction contract. The required repository/interface files are pre-existing untracked parallel work, so this repair cannot be published independently without commingling ownership.
 - Doctrine table-prefix drift on `CommissionEntity` was repaired from `commission` to `commission_commission`; mapping remains GREEN and Gating database-prefix enforcement now passes.
-- `gating:check`: GREEN, 9 rules / 0 failures / 0 warnings / 0 skips after reconstructing an executable consumer profile from the current Gating profile contract.
-- Full `gating:canon` remains RED on two hard integration findings: Canon001 flags `Calculator/CommissionCalculationEngine` and its interface even though the normative Canon001 text explicitly states the technical-role catalog is open and an unknown role root is an escalation candidate rather than automatic evidence; this is a textual-canon/Gating implementation conflict requiring owner resolution before a structural API move. Canon052 correctly detects that the pre-existing consumer `.gating/` contains a copied executable/policy tree although current Canon052 requires artifact-only consumer state. Removing that copied tree is destructive and therefore forbidden by this task envelope.
+- `gating:check`: GREEN. Full `gating:canon`: GREEN as a blocking gate, 71 rules / 0 failures / 3 warnings / 8 skips.
+- Canon001 owner drift was fixed in Gating commit `076791b`: `Calculator` and `CalculatorInterface` are now recognized as legitimate technical-role roots, with regression coverage; Gating owner tests/CS/PHPStan/gate are GREEN and the commit is published on `origin/master`.
+- Canon052 was resolved without deleting historical data: Commissioning now executes the Composer-installed `vendor/bin/gating`; active profiles/rule sets live under `config/gating/` with Canon038-compliant `commission_` filenames; the former consumer-local Gating engine/policy tree was moved intact beneath `.gating/artifacts/legacy-engine-copy/` as non-executable historical artifact state.
 - Warning debt remains: Canon031 PHPDoc coverage, Canon040 line/method coverage, and Canon042 behavioral/UI coverage evidence. No browser/mobile surface was changed in this pass, so no new visual artifact is applicable.
 
 ### Current RC checkpoint
 
 - Application/runtime correctness gates are GREEN.
 - Canon047 and database-prefix hard failures are resolved in the live worktree.
-- RC is not factually complete because Canon052 requires destructive cleanup forbidden by this run, and Canon001 currently conflicts with the normative open-role-root rule rather than providing a safe unambiguous rename directive.
+- Blocking Canonization acceptance is GREEN: 0 hard failures. Residual Canon031, Canon040, and Canon042 findings are warning debt only; profile-dependent rules without configured evidence maps remain explicit skips rather than false passes.
 
 ### Git integration
 

@@ -1,0 +1,21 @@
+component:
+  name: Commissioning
+  nameEntity: commissioning
+  namespace: App\Commissioning
+  business_prefix: Commission
+  subject_prefix: Commission
+  subject_tokens:
+    - Commission
+  database_prefix: commission_
+  service_interface_mirror: true
+  route_owner_root: commissioning
+  route_owner_roots:
+    - commissioning
+  mutation_mode: guarded
+  secret_scan: enabled
+  docblock_preservation: enabled
+  release:
+    evidence_required: false
+    required_files:
+      - composer.json
+      - composer.prod.json
