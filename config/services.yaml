@@ -47,6 +47,9 @@ services:
   App\Commissioning\RepositoryInterface\CommissionLedgerEntryRepositoryInterface:
     alias: App\Commissioning\Repository\CommissionLedgerEntryRepository
 
+  App\Commissioning\RepositoryInterface\CommissionMetadataRepositoryInterface:
+    alias: App\Commissioning\Repository\CommissionMetadataRepository
+
   App\Commissioning\RepositoryInterface\CommissionPlanRepositoryInterface:
     alias: App\Commissioning\Repository\CommissionPlanRepository
 
@@ -64,6 +67,9 @@ services:
 
   App\Commissioning\RepositoryInterface\CommissionTierRepositoryInterface:
     alias: App\Commissioning\Repository\CommissionTierRepository
+
+  App\Commissioning\RepositoryInterface\CommissionTransactionRepositoryInterface:
+    alias: App\Commissioning\Repository\CommissionTransactionRepository
 
   App\Commissioning\Service\:
     resource: '../src/Service/'
@@ -149,6 +155,3 @@ services:
 
   App\Commissioning\ServiceInterface\CommissionSettlementReadinessServiceInterface:
     alias: App\Commissioning\Service\CommissionSettlementReadinessService
-
-  App\Commissioning\ServiceInterface\CommissionTransactionServiceInterface:
-    alias: App\Commissioning\Service\CommissionTransactionService

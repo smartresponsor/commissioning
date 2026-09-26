@@ -12,9 +12,9 @@ use App\Commissioning\Enum\CommissionLedgerStatusEnum;
 use App\Commissioning\RepositoryInterface\CommissionLedgerEntryRepositoryInterface;
 use App\Commissioning\RepositoryInterface\CommissionSettlementBatchEntryRepositoryInterface;
 use App\Commissioning\RepositoryInterface\CommissionSettlementBatchRepositoryInterface;
+use App\Commissioning\RepositoryInterface\CommissionTransactionRepositoryInterface;
 use App\Commissioning\Service\CommissionSettlementBatchService;
 use App\Commissioning\Service\CommissionSettlementReadinessService;
-use App\Commissioning\ServiceInterface\CommissionTransactionServiceInterface;
 use PHPUnit\Framework\TestCase;
 
 final class CommissionSettlementWorkflowTest extends TestCase
@@ -108,9 +108,9 @@ final class CommissionSettlementWorkflowTest extends TestCase
         return new CommissionLedgerEntryEntity($calculation, $beneficiaryReference, 'USD', $minorAmount);
     }
 
-    private function immediateTransactionService(): CommissionTransactionServiceInterface
+    private function immediateTransactionService(): CommissionTransactionRepositoryInterface
     {
-        $service = $this->createStub(CommissionTransactionServiceInterface::class);
+        $service = $this->createStub(CommissionTransactionRepositoryInterface::class);
         $service->method('transactional')->willReturnCallback(static fn (callable $callback): mixed => $callback());
 
         return $service;

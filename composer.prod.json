@@ -1,6 +1,6 @@
 {
   "name": "commissioning/commission",
-  "description": "SmartResponsor commissioning component",
+  "description": "Commissioning Symfony component",
   "type": "symfony-bundle",
   "license": "proprietary",
   "require": {
@@ -42,5 +42,15 @@
     "allow-plugins": {
       "symfony/runtime": true
     }
-  }
+  },
+  "require-dev": {
+    "gating/gate": "dev-master"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/smartresponsor/gating.git",
+      "no-api": true
+    }
+  ]
 }

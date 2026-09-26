@@ -4,6 +4,8 @@
   "scripts": {
     "test": "playwright test",
     "test:ui": "playwright test",
+    "test:behavioral": "php vendor/bin/phpunit tests/Behavioral/CommissionHttpBehaviorTest.php && node tool/generate-behavioral-ui-coverage.mjs",
+    "smoke": "php vendor/bin/phpunit tests/Behavioral/CommissionHttpBehaviorTest.php && node tool/generate-behavioral-ui-coverage.mjs",
     "playwright:install": "playwright install chromium"
   },
   "devDependencies": {

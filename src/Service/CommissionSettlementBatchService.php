@@ -11,22 +11,28 @@ use App\Commissioning\Entity\CommissionSettlementBatchEntryEntity;
 use App\Commissioning\RepositoryInterface\CommissionLedgerEntryRepositoryInterface;
 use App\Commissioning\RepositoryInterface\CommissionSettlementBatchEntryRepositoryInterface;
 use App\Commissioning\RepositoryInterface\CommissionSettlementBatchRepositoryInterface;
+use App\Commissioning\RepositoryInterface\CommissionTransactionRepositoryInterface;
 use App\Commissioning\ServiceInterface\CommissionSettlementBatchServiceInterface;
-use App\Commissioning\ServiceInterface\CommissionTransactionServiceInterface;
 
+/**
+ * Coordinates Commissioning application behavior implemented by CommissionSettlementBatchService across typed collaborators and boundaries.
+ */
 final class CommissionSettlementBatchService implements CommissionSettlementBatchServiceInterface
 {
     public function __construct(
         private readonly CommissionLedgerEntryRepositoryInterface $ledgerRepository,
         private readonly CommissionSettlementBatchRepositoryInterface $batchRepository,
         private readonly CommissionSettlementBatchEntryRepositoryInterface $batchEntryRepository,
-        private readonly CommissionTransactionServiceInterface $transactionService,
+        private readonly CommissionTransactionRepositoryInterface $transactionRepository,
     ) {
     }
 
+    /**
+     * Performs the createBatch operation defined by this typed Commissioning application contract.
+     */
     public function createBatch(CommissionSettlementBatchCreateRequestDTO $request): CommissionSettlementBatchCreateResultDTO
     {
-        return $this->transactionService->transactional(function () use ($request): CommissionSettlementBatchCreateResultDTO {
+        return $this->transactionRepository->transactional(function () use ($request): CommissionSettlementBatchCreateResultDTO {
             $batch = $this->batchRepository->findOneByBatchReference($request->batchReference);
 
             if (!$batch instanceof CommissionSettlementBatchEntity) {

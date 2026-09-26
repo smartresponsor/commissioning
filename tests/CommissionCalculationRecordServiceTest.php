@@ -15,9 +15,9 @@ use App\Commissioning\RepositoryInterface\CommissionCalculationLineRepositoryInt
 use App\Commissioning\RepositoryInterface\CommissionCalculationRepositoryInterface;
 use App\Commissioning\RepositoryInterface\CommissionLedgerEntryRepositoryInterface;
 use App\Commissioning\RepositoryInterface\CommissionPlanRepositoryInterface;
+use App\Commissioning\RepositoryInterface\CommissionTransactionRepositoryInterface;
 use App\Commissioning\Service\CommissionCalculationRecordService;
 use App\Commissioning\ServiceInterface\CommissionIdempotencyServiceInterface;
-use App\Commissioning\ServiceInterface\CommissionTransactionServiceInterface;
 use PHPUnit\Framework\TestCase;
 
 final class CommissionCalculationRecordServiceTest extends TestCase
@@ -58,7 +58,7 @@ final class CommissionCalculationRecordServiceTest extends TestCase
             ->with('event-1')
             ->willReturn(new CommissionIdempotencyResultDTO(true, 'event-1'));
 
-        $transaction = $this->createMock(CommissionTransactionServiceInterface::class);
+        $transaction = $this->createMock(CommissionTransactionRepositoryInterface::class);
         $transaction->expects(self::never())->method('transactional');
 
         $result = (new CommissionCalculationRecordService(
@@ -126,7 +126,7 @@ final class CommissionCalculationRecordServiceTest extends TestCase
             ->with('event-1')
             ->willReturn(new CommissionIdempotencyResultDTO(false, 'event-1'));
 
-        $transaction = $this->createMock(CommissionTransactionServiceInterface::class);
+        $transaction = $this->createMock(CommissionTransactionRepositoryInterface::class);
         $transaction
             ->expects(self::once())
             ->method('transactional')
@@ -170,7 +170,7 @@ final class CommissionCalculationRecordServiceTest extends TestCase
         $idempotency = $this->createStub(CommissionIdempotencyServiceInterface::class);
         $idempotency->method('checkEconomicEvent')->willReturn(new CommissionIdempotencyResultDTO(false, 'event-1'));
 
-        $transaction = $this->createStub(CommissionTransactionServiceInterface::class);
+        $transaction = $this->createStub(CommissionTransactionRepositoryInterface::class);
         $transaction->method('transactional')->willReturnCallback(static fn (callable $callback): mixed => $callback());
 
         $result = (new CommissionCalculationRecordService(

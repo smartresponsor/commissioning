@@ -6,10 +6,13 @@ namespace App\Commissioning\Service;
 
 use App\Commissioning\DTO\CommissionRuntimeCheckResultDTO;
 use App\Commissioning\DTO\CommissionRuntimeReportDTO;
+use App\Commissioning\RepositoryInterface\CommissionMetadataRepositoryInterface;
 use App\Commissioning\ServiceInterface\CommissionRuntimeAuditServiceInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Routing\RouterInterface;
 
+/**
+ * Coordinates Commissioning application behavior implemented by CommissionRuntimeAuditService across typed collaborators and boundaries.
+ */
 final class CommissionRuntimeAuditService implements CommissionRuntimeAuditServiceInterface
 {
     /**
@@ -46,10 +49,13 @@ final class CommissionRuntimeAuditService implements CommissionRuntimeAuditServi
 
     public function __construct(
         private readonly RouterInterface $router,
-        private readonly EntityManagerInterface $entityManager,
+        private readonly CommissionMetadataRepositoryInterface $metadataRepository,
     ) {
     }
 
+    /**
+     * Builds the Commissioning runtime audit report from configured routes and persistence metadata.
+     */
     public function audit(): CommissionRuntimeReportDTO
     {
         $checks = [
@@ -109,8 +115,7 @@ final class CommissionRuntimeAuditService implements CommissionRuntimeAuditServi
 
         foreach (self::REQUIRED_ENTITIES as $entityClass) {
             try {
-                $metadata = $this->entityManager->getClassMetadata($entityClass);
-                $messages[] = sprintf('%s: mapped to %s', $entityClass, $metadata->getTableName());
+                $messages[] = sprintf('%s: mapped to %s', $entityClass, $this->metadataRepository->getTableName($entityClass));
             } catch (\Throwable $exception) {
                 $messages[] = sprintf('%s: missing metadata: %s', $entityClass, $exception->getMessage());
             }

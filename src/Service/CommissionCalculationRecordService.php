@@ -15,10 +15,13 @@ use App\Commissioning\RepositoryInterface\CommissionCalculationLineRepositoryInt
 use App\Commissioning\RepositoryInterface\CommissionCalculationRepositoryInterface;
 use App\Commissioning\RepositoryInterface\CommissionLedgerEntryRepositoryInterface;
 use App\Commissioning\RepositoryInterface\CommissionPlanRepositoryInterface;
+use App\Commissioning\RepositoryInterface\CommissionTransactionRepositoryInterface;
 use App\Commissioning\ServiceInterface\CommissionCalculationRecordServiceInterface;
 use App\Commissioning\ServiceInterface\CommissionIdempotencyServiceInterface;
-use App\Commissioning\ServiceInterface\CommissionTransactionServiceInterface;
 
+/**
+ * Coordinates Commissioning application behavior implemented by CommissionCalculationRecordService across typed collaborators and boundaries.
+ */
 final class CommissionCalculationRecordService implements CommissionCalculationRecordServiceInterface
 {
     public function __construct(
@@ -27,10 +30,13 @@ final class CommissionCalculationRecordService implements CommissionCalculationR
         private readonly CommissionCalculationLineRepositoryInterface $lineRepository,
         private readonly CommissionLedgerEntryRepositoryInterface $ledgerRepository,
         private readonly CommissionIdempotencyServiceInterface $idempotencyService,
-        private readonly CommissionTransactionServiceInterface $transactionService,
+        private readonly CommissionTransactionRepositoryInterface $transactionRepository,
     ) {
     }
 
+    /**
+     * Performs the record operation defined by this typed Commissioning application contract.
+     */
     public function record(CommissionRecordCalculationRequestDTO $request): CommissionRecordCalculationResultDTO
     {
         $idempotency = $this->idempotencyService->checkEconomicEvent($request->economicEventReference);
@@ -47,7 +53,7 @@ final class CommissionCalculationRecordService implements CommissionCalculationR
             );
         }
 
-        return $this->transactionService->transactional(function () use ($request): CommissionRecordCalculationResultDTO {
+        return $this->transactionRepository->transactional(function () use ($request): CommissionRecordCalculationResultDTO {
             $plan = $this->planRepository->findOneByCode($request->planCode);
 
             if (!$plan instanceof CommissionPlanEntity) {
