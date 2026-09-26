@@ -12,6 +12,7 @@
 /phpunit.xml
 /.php-cs-fixer.cache
 /.codebase-memory/
+/.gating/artifacts/
 
 ### Composer ###
 /composer.lock
