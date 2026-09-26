@@ -46,6 +46,11 @@
 - Canon047 and database-prefix hard failures are resolved in the live worktree.
 - RC is not factually complete because Canon052 requires destructive cleanup forbidden by this run, and Canon001 currently conflicts with the normative open-role-root rule rather than providing a safe unambiguous rename directive.
 
+### Git integration
+
+- Created signed commit `bca85c3` (`Harden Commissioning RC rule evaluation`) containing only ownership-safe paths from this pass: `CMCP_CHANGELOG.md`, `src/Entity/CommissionEntity.php`, and `tests/CommissionRuleEvaluationServiceTest.php`.
+- Published `checkpoint/pre-origin-sync` successfully to its configured upstream. Overlapping pre-existing dirty files remain intentionally unstaged/uncommitted rather than being silently absorbed.
+
 ## engine-20260912083052-commissioning-3707bd
 
 ### Iteration 1 — reconnaissance and baseline
