@@ -66,6 +66,7 @@
 - Composer strict/check-lock validation: GREEN. Symfony 8.1.7 / PHP 8.4.13 runtime: GREEN. Container lint: GREEN. YAML lint: GREEN (10 files). Doctrine mapping: GREEN. Migrations: current.
 - Behavioral/UI artifacts are evidence-only; no user-visible browser/mobile UI was changed, so screenshot evidence is not applicable.
 - During this continuation the shared branch advanced independently through commits `8e97e01` (canonical Gating configuration) and `25e9843` (ignore local Gating artifacts). Their work is preserved; Git integration for this continuation stages only ownership-safe paths and excludes files that were already dirty before the canon pass.
+- Signed Commissioning integration commits: `9e9b702` (runtime boundaries), `ade7b2e` (typed application PHPDoc), `4215327` (DTO/entity PHPDoc), `7444d4a` (persistence/resolver PHPDoc), `242f2ab` (service/value PHPDoc), `a4dbfac` (canon coverage/evidence), and `2ac7e54` (repository-backed resolver coverage).
 
 ## engine-20260912083052-commissioning-3707bd
 
