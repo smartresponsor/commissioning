@@ -41,6 +41,12 @@
 - Original RED canon front is remediated with deterministic local evidence.
 - Remaining dirty paths `.gating/README.md`, `RELEASE_READINESS_SUMMARY.md`, `LICENSE`, `NOTICE`, and `PRODUCT_CAPABILITY_AUDIT.adoc` pre-date this pass and remain outside its commit ownership.
 
+### Git integration
+
+- Signed implementation commit `6131150` (`Canonicalize Commissioning OpenAPI contract`) contains only ownership-safe remediation paths from this task.
+- Published `checkpoint/pre-origin-sync` successfully to `origin/checkpoint/pre-origin-sync`; post-push branch state is ahead 0 / behind 0.
+- Post-integration worktree contains only the five preserved pre-existing unrelated paths listed above.
+
 ## engine-20260926085811-commissioning-a900c8
 
 ### Reconnaissance and baseline
