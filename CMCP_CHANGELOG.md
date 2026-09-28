@@ -1,5 +1,46 @@
 # CMCP Orchestration Journal
 
+## engine-20260928095245-commissioning-0925c7
+
+### Reconnaissance and baseline
+
+- Workspace resolved through Console MCP as `D:\\PhpstormProjects\\www\\Commissioning` on `checkpoint/pre-origin-sync` at `6d2ebd32e7ef6866b521b8366afc3fbf647d374a`; the branch matches its upstream and has pre-existing dirty/untracked work that is being preserved.
+- Consumed the fresh CanonScanning reports for fingerprint `ebe66d759eaf5803a3ae774b5265fe0ffe6915f6513fc92f131180654eeec422`: Gating is RED on Canon052, Canon056, Canon058, Canon059, and Canon063; Inspecting has three medium long-method observations and no RC-critical structural finding.
+- Read Commissioning `AGENTS.md`, README, development/production Composer manifests, Gating profiles, current API controllers/OpenAPI seed, release-readiness notes, and prior CMCP journal.
+- Read the mandatory Objecting, Cruding, Viewing, Interfacing, Gating, and Canonization contract contour. Relevant normative Canonization rules consulted: Canon052, Canon056, Canon058, Canon059, Canon061, Canon062, and Canon063.
+- Target mapping: `commissioning/commission` -> `App\\Commissioning\\` with subject token/prefix `Commission`; generic CRUD stays Cruding-owned, system fields Objecting-owned, presentation Viewing-owned, and shell/interface concerns Interfacing-owned.
+
+### Market / maturity opening mixin
+
+- Mature commission platforms normally require deterministic calculation lineage, plan/rate versioning, idempotent settlement handoff, externally documented APIs, auditability, observability, and strict separation between calculation ownership and payout execution.
+- RC-critical workstream selected: restore canonical external API contract ownership/parity and Gating consumer topology without changing business semantics.
+- Growth workstream (post-RC): effective-dated plan versions, richer dispute/approval workflows, retroactive recalculation, API schema depth/security documentation, and operator-facing diagnostics.
+
+### Material risks and gates
+
+- Preserve unrelated dirty work; do not reset/clean/stash.
+- Do not duplicate Gating engine/policy inside consumer `.gating/`; preserve historical copies only beneath artifact-only roots.
+- Canon061 becomes applicable when the canonical OpenAPI source is restored, so development and production manifests must directly own `nelmio/api-doc-bundle`.
+- Verification: Composer validate/check-lock, Gating canon, CS/PHPStan/PHPUnit/quality where applicable, Symfony runtime/container/YAML, Doctrine checks, and post-mutation Inspecting because the supplied fingerprint becomes stale.
+
+### Material implementation and verification
+
+- Promoted the API contract from `docs/api/openapi-seed.yaml` to the Canon058 source `config/openapi/commission_openapi.yaml`, explicitly declared it through `canonical_openapi_path`, and preserved the former seed under ignored `.gating/artifacts/` rather than deleting its contents.
+- Added direct `nelmio/api-doc-bundle:^5.0` ownership to development and production manifests; Composer resolved Nelmio v5.12.2 and refreshed the local lock/install set.
+- Restored Canon052 consumer topology by relocating the accidentally copied executable Gating tree into `.gating/artifacts/duplicate-20260928-*`; no copied content was deleted.
+- Extended the repository's `commission_gating_canon.yaml` from Canon055 through Canon066 so the advertised full Canon run actually verifies the current OpenAPI/failure-contract rules.
+- Replaced the tautological smoke assertion flagged by Inspecting with deterministic bundle-file existence proof.
+- `gating:canon`: GREEN, 82 rules, 0 failures, 0 warnings, 13 explicit skips; Canon052 and Canon056/058/059/061/062/063 all pass.
+- `composer validate --strict --check-lock`: GREEN. `composer quality`: GREEN; PHP-CS-Fixer 0 pending, PHPStan 0 errors, PHPUnit 76 tests / 529 assertions.
+- Symfony runtime/container/YAML: GREEN on Symfony 8.1.7 / PHP 8.4.13; 11 YAML files valid. Doctrine mapping: GREEN; migrations up-to-date.
+- Fresh Inspecting report `D--PhpstormProjects-www-Commissioning-20260928-101043.json`: no PHPStan findings; three pre-existing medium long-method observations only. No high finding remains.
+- No browser/mobile UI surface changed; behavioral test coverage remains repository-owned and GREEN, and no new screenshot evidence is applicable.
+
+### RC checkpoint
+
+- Original RED canon front is remediated with deterministic local evidence.
+- Remaining dirty paths `.gating/README.md`, `RELEASE_READINESS_SUMMARY.md`, `LICENSE`, `NOTICE`, and `PRODUCT_CAPABILITY_AUDIT.adoc` pre-date this pass and remain outside its commit ownership.
+
 ## engine-20260926085811-commissioning-a900c8
 
 ### Reconnaissance and baseline

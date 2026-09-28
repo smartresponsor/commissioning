@@ -10,6 +10,6 @@ final class CommissioningSmokeTest extends TestCase
 {
     public function testFoundationExists(): void
     {
-        self::assertTrue(true);
+        self::assertFileExists(dirname(__DIR__).'/src/CommissioningBundle.php');
     }
 }

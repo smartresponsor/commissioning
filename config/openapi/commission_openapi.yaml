@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: Commissioning API
   version: 0.1.0
-  description: API seed for Commissioning contract surface.
+  description: Canonical Commissioning API contract.
 paths:
   /api/commissioning/calculation/preview:
     post:
@@ -38,10 +38,3 @@ paths:
       summary: Export settlement batch for Paying/Payouting.
       parameters:
         - name: batchReference
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Settlement batch export result.

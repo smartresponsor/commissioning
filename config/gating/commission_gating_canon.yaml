@@ -58,6 +58,17 @@ rule_set:
     - canon.053.sibling_composer_symlink_isolation
     - canon.054.doctrine_physical_identifier_naming
     - canon.055.platform_identity_terminology
+    - canon.056.external_api_openapi_parity
+    - canon.057.external_api_version_prefix
+    - canon.058.canonical_openapi_source
+    - canon.059.openapi_parity_canonical_source
+    - canon.060.openapi_version_prefix
+    - canon.061.openapi_nelmio_producer_dependency
+    - canon.062.openapi_profile_canonical_path_alias
+    - canon.063.external_api_method_parity
+    - canon.064.failure_contract_ownership
+    - canon.065.no_framework_failure_reimplementation
+    - canon.066.failure_declaration_inventory
     - canon.mirror_contract
     - profile.contract_validity
     - structure.forbidden_architecture

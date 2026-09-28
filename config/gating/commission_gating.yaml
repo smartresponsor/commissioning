@@ -7,6 +7,7 @@ component:
   subject_tokens:
     - Commission
   database_prefix: commission_
+  canonical_openapi_path: config/openapi/commission_openapi.yaml
   service_interface_mirror: true
   route_owner_root: commissioning
   route_owner_roots:

@@ -9,6 +9,7 @@
     "cruding/crud": "dev-master",
     "failing/failure": "dev-master",
     "easycorp/easyadmin-bundle": "^5.0",
+    "nelmio/api-doc-bundle": "^5.0",
     "interfacing/interface": "dev-master",
     "objecting/object": "dev-master",
     "tabling/table": "dev-master",
