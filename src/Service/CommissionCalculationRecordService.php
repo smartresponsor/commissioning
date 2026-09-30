@@ -42,61 +42,83 @@ final class CommissionCalculationRecordService implements CommissionCalculationR
         $idempotency = $this->idempotencyService->checkEconomicEvent($request->economicEventReference);
 
         if ($idempotency->duplicate) {
-            $existing = $this->calculationRepository->findOneByEconomicEventReference($request->economicEventReference);
-
-            return new CommissionRecordCalculationResultDTO(
-                economicEventReference: $request->economicEventReference,
-                currencyCode: $request->currencyCode,
-                commissionMinorAmount: $existing?->getCommissionMinorAmount() ?? $request->commissionMinorAmount,
-                ledgerStatus: 'duplicate',
-                duplicate: true,
-            );
+            return $this->duplicateResult($request);
         }
 
-        return $this->transactionRepository->transactional(function () use ($request): CommissionRecordCalculationResultDTO {
-            $plan = $this->planRepository->findOneByCode($request->planCode);
+        return $this->transactionRepository->transactional(
+            fn (): CommissionRecordCalculationResultDTO => $this->recordNewCalculation($request),
+        );
+    }
 
-            if (!$plan instanceof CommissionPlanEntity) {
-                $plan = new CommissionPlanEntity($request->planCode, $request->planName);
-                $this->planRepository->save($plan);
-            }
+    private function duplicateResult(CommissionRecordCalculationRequestDTO $request): CommissionRecordCalculationResultDTO
+    {
+        $existing = $this->calculationRepository->findOneByEconomicEventReference($request->economicEventReference);
 
-            $calculation = new CommissionCalculationEntity(
-                plan: $plan,
-                economicEventReference: $request->economicEventReference,
-                currencyCode: $request->currencyCode,
-                basisMinorAmount: $request->basisMinorAmount,
-                commissionMinorAmount: $request->commissionMinorAmount,
-            );
+        return new CommissionRecordCalculationResultDTO(
+            economicEventReference: $request->economicEventReference,
+            currencyCode: $request->currencyCode,
+            commissionMinorAmount: $existing?->getCommissionMinorAmount() ?? $request->commissionMinorAmount,
+            ledgerStatus: 'duplicate',
+            duplicate: true,
+        );
+    }
 
-            $this->calculationRepository->save($calculation);
+    private function recordNewCalculation(CommissionRecordCalculationRequestDTO $request): CommissionRecordCalculationResultDTO
+    {
+        $plan = $this->resolvePlan($request);
+        $calculation = new CommissionCalculationEntity(
+            plan: $plan,
+            economicEventReference: $request->economicEventReference,
+            currencyCode: $request->currencyCode,
+            basisMinorAmount: $request->basisMinorAmount,
+            commissionMinorAmount: $request->commissionMinorAmount,
+        );
 
-            foreach ($request->lines as $line) {
-                $this->lineRepository->save(new CommissionCalculationLineEntity(
-                    calculation: $calculation,
-                    lineType: CommissionCalculationLineTypeEnum::from($line->lineType),
-                    currencyCode: $line->currencyCode,
-                    minorAmount: $line->minorAmount,
-                    explanation: $line->explanation,
-                ));
-            }
+        $this->calculationRepository->save($calculation);
+        $this->persistLines($calculation, $request);
 
-            $ledgerEntry = new CommissionLedgerEntryEntity(
+        $ledgerEntry = new CommissionLedgerEntryEntity(
+            calculation: $calculation,
+            beneficiaryReference: $request->beneficiaryReference,
+            currencyCode: $request->currencyCode,
+            minorAmount: $request->commissionMinorAmount,
+        );
+        $this->ledgerRepository->save($ledgerEntry);
+
+        return new CommissionRecordCalculationResultDTO(
+            economicEventReference: $request->economicEventReference,
+            currencyCode: $request->currencyCode,
+            commissionMinorAmount: $request->commissionMinorAmount,
+            ledgerStatus: $ledgerEntry->getStatus()->value,
+            duplicate: false,
+        );
+    }
+
+    private function resolvePlan(CommissionRecordCalculationRequestDTO $request): CommissionPlanEntity
+    {
+        $plan = $this->planRepository->findOneByCode($request->planCode);
+        if ($plan instanceof CommissionPlanEntity) {
+            return $plan;
+        }
+
+        $plan = new CommissionPlanEntity($request->planCode, $request->planName);
+        $this->planRepository->save($plan);
+
+        return $plan;
+    }
+
+    private function persistLines(
+        CommissionCalculationEntity $calculation,
+        CommissionRecordCalculationRequestDTO $request,
+    ): void {
+        foreach ($request->lines as $line) {
+            $this->lineRepository->save(new CommissionCalculationLineEntity(
                 calculation: $calculation,
-                beneficiaryReference: $request->beneficiaryReference,
-                currencyCode: $request->currencyCode,
-                minorAmount: $request->commissionMinorAmount,
-            );
-
-            $this->ledgerRepository->save($ledgerEntry);
-
-            return new CommissionRecordCalculationResultDTO(
-                economicEventReference: $request->economicEventReference,
-                currencyCode: $request->currencyCode,
-                commissionMinorAmount: $request->commissionMinorAmount,
-                ledgerStatus: $ledgerEntry->getStatus()->value,
-                duplicate: false,
-            );
-        });
+                lineType: CommissionCalculationLineTypeEnum::from($line->lineType),
+                currencyCode: $line->currencyCode,
+                minorAmount: $line->minorAmount,
+                explanation: $line->explanation,
+            ));
+        }
     }
 }

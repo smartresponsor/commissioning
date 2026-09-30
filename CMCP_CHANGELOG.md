@@ -1,5 +1,54 @@
 # CMCP Orchestration Journal
 
+## 2026-09-30 — engine-20260930205542-commissioning-ff050b
+
+### Baseline
+
+- Workspace: `D:\\PhpstormProjects\\www\\Commissioning`; branch `checkpoint/pre-origin-sync` at `61f94c247b37d5f0ac62aa52faab1ca7be466be5`, synchronized with its upstream before mutation.
+- Preserved pre-existing dirty work: deleted `.gating/README.md`, modified `RELEASE_READINESS_SUMMARY.md`, plus untracked `LICENSE`, `NOTICE`, and `PRODUCT_CAPABILITY_AUDIT.adoc`.
+- Consumed CanonScanning RED evidence for fingerprint `d67c0d32e16409b0ed3cfe43a178cb1039caebc640013dfda4528d3fd987f5b3`: its sole hard finding was Canon052 consumer Gating topology. Current repository evidence supersedes that scan: the prior journal documents preservation/remediation, and current RC diagnosis reports zero canon issues.
+- Consumed Inspecting evidence: three medium long-method observations; selected `CommissionCalculationRecordService::record()` because it sits on the commission persistence/idempotency path and can be decomposed without changing its public contract.
+
+### Contracts and canon mapping
+
+- Commissioning: `AGENTS.md`, README, development/production Composer manifests, Gating profiles, release-readiness notes, source/test inventory and current record-service regression tests.
+- Dependency contour: Objecting, Cruding, Viewing and Interfacing repository contracts/manifests were inspected; generic CRUD remains Cruding-owned, system fields Objecting-owned, presentation Viewing-owned and shell/interface concerns Interfacing-owned.
+- Canonization: consulted Canon052 normative rule and Guard Matrix. Commissioning already satisfies the Composer dependency/symlink/script/production-package contract; consumer `.gating/` must remain artifact-only.
+- Gating: consulted current owner README/distribution contract and executable Canon052 mirror.
+
+### Market / maturity opening mixin
+
+- 2026 sales-compensation products emphasize complex plan support, transparent calculation lineage, integrations, real-time visibility and auditability; mature open-source commission suites also expose formula/rule extensibility.
+- RC-critical workstream: simplify the money-sensitive calculation-record orchestration while preserving transactional, idempotency and persistence semantics, then prove it through deterministic gates.
+- Growth workstream: rule-driven plan/rate selection, stronger settlement idempotency, richer calculation explainability/audit UX and additional integration maturity remain post-RC unless a deterministic correctness gate promotes them.
+
+### Gates to run
+
+- Focused/full PHPUnit, PHPStan and CS check.
+- Canon/Gating plus Composer validation.
+- Symfony runtime/container/YAML and Doctrine schema/migration checks.
+- Fresh Inspecting after PHP mutation; UI screenshots are not applicable unless a user-observable UI surface changes.
+
+### Implementation and acceptance
+
+- Decomposed `CommissionCalculationRecordService::record()` into focused private helpers for duplicate-result mapping, new-calculation persistence, plan resolution and line persistence. Public interfaces, transaction ownership, idempotency behavior and persisted entities are unchanged.
+- PHP lint: GREEN for the changed service.
+- Aggregate `quality`: GREEN; PHP-CS-Fixer 0 pending files, PHPStan 0 errors, PHPUnit 76 tests / 529 assertions.
+- Composer strict/check-lock validation: GREEN.
+- Coverage refreshed: Canon040 GREEN at 89.5% lines, 80.7% methods and 90.0% branches.
+- Full `gating:canon`: 82 rules, 0 failures. Canon052 is GREEN in the current live repository.
+- Symfony runtime: GREEN on Symfony 8.1.7 / PHP 8.4.13; container lint GREEN; 11 YAML files GREEN.
+- Doctrine mapping: GREEN; migration freshness GREEN with no migrations to execute.
+- Behavioral HTTP contracts executed inside the full PHPUnit suite and passed. Canon042 remains a warning only because the repository-owned behavioral evidence artifact is stale after the PHP timestamp change; two attempts to refresh it through the declared npm smoke path were not started because Console MCP runtime capacity was `ADMIT_LIGHT_ONLY` under `ENGINE_BACKLOG_HIGH`.
+- Fresh Inspecting was attempted twice after the PHP mutation. The synchronous Console MCP invocation exceeded the tool execution window both times; Inspecting itself reports `INSPECTING_READY`. This is an external verification-runtime blocker, not an analyzer finding.
+- No browser/mobile/UI surface changed, so screenshot/visual evidence is not applicable.
+
+### RC checkpoint
+
+- The stale upstream Canon052 RED is superseded by current deterministic evidence: Canon052 and the full canon gate are GREEN.
+- The selected money-sensitive maintainability hardening is implemented and all available deterministic application/runtime gates are GREEN.
+- Remaining verification tails are external capacity/tool-window constraints only: behavioral evidence regeneration and fresh Inspecting report persistence. A final asynchronous RC-full verification attempt was also not started because the repository worker remained `ADMIT_LIGHT_ONLY` under `ENGINE_BACKLOG_HIGH`.
+
 ## 2026-09-29 — engine-20260930013959-commissioning-67061d
 
 ### Baseline
