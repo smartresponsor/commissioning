@@ -1,5 +1,64 @@
 # CMCP Orchestration Journal
 
+## 2026-09-29 — engine-20260930013959-commissioning-67061d
+
+### Baseline
+
+- Workspace: `D:\\PhpstormProjects\\www\\Commissioning`; branch `checkpoint/pre-origin-sync` at `90bbfcc79094e08b2380bc2b81572010695419ee`, upstream synchronized before mutation.
+- Preserved unrelated pre-existing work: `RELEASE_READINESS_SUMMARY.md`, `LICENSE`, `NOTICE`, and `PRODUCT_CAPABILITY_AUDIT.adoc`.
+- Fresh CanonScanning RED evidence for fingerprint `d67c0d32e16409b0ed3cfe43a178cb1039caebc640013dfda4528d3fd987f5b3` had one hard failure: `canon.052.gating_integration`.
+- Fresh Inspecting evidence had three medium long-method observations and no autofixable RC blocker.
+
+### Contracts read and target mapping
+
+- Commissioning: agent rules, README, development/production Composer manifests, Gating profiles, runtime bundles/routes, PHPUnit/PHPStan/behavioral tooling, and representative calculation/seed/fixture services.
+- Canonization: Canon022, Canon052, Canon053, AGENTS projection, Guard Matrix and architecture journal references.
+- Gating: README plus executable `Canon052GatingIntegrationRule`.
+- Dependency contour: Objecting, Cruding, Viewing, and Interfacing contracts were inspected from the shared workspace.
+- Canon052 mapping: package/symlink/scripts/production metadata are already canonical; the failure was a copied executable Gating repository inside consumer `.gating/`, which must be artifact-only.
+- Canon053 mapping: Commissioning's current sibling helper symlinks are within the canonical admitted contour.
+- Canon022 mapping: standalone runtime dependencies are declared and `FailingBundle` is registered.
+- Boundary mapping: Objecting retains system-field ownership; Cruding retains generic CRUD; Viewing/Interfacing retain presentation/shell concerns.
+
+### Market / maturity opening mixin
+
+Mature commission/ICM products emphasize transparent calculation lineage, complex plan/rule modeling, real-time visibility, integrations, auditability, and enterprise controls. Open-source commission projects expose formula/rule extension points. These inform growth work but do not expand this RC remediation.
+
+### Selected work
+
+RC-critical:
+- Restore Canon052 artifact-only `.gating/` topology without deleting the accidentally copied Gating tree.
+- Re-run deterministic canon/quality/runtime/Doctrine/behavioral checks.
+- Preserve unrelated working-tree content and integrate only task-owned changes.
+
+Growth / post-RC:
+- Wire rule-driven plan/rate selection into the economic-event flow.
+- Improve calculation/payout explainability and audit visibility.
+- Continue repository-backed integration coverage without duplicating helper responsibilities.
+
+### Preservation action
+
+- Moved the accidental pre-existing `.gating/` engine tree intact to ignored local state at `var/cmcp-preserved-gating-engine-20260929-engine-20260930013959-commissioning-67061d`.
+- Recreated the canonical tracked `.gating/README.md`.
+- No clean/reset/delete/stash operation was used.
+
+### Gates
+
+Acceptance result:
+
+- Composer strict/check-lock validation: GREEN.
+- `gating:canon`: GREEN, 82 rules / 0 failed / 0 warnings / 13 explicit skips; Canon052 passes.
+- Aggregate `quality`: GREEN. PHP-CS-Fixer has 0 pending files, PHPStan has 0 errors, PHPUnit passes 76 tests / 529 assertions, and the generic Gating gate passes.
+- Symfony runtime: GREEN on Symfony 8.1.7 / PHP 8.4.13. Container lint: GREEN. YAML lint: GREEN for 11 files.
+- Doctrine mapping validation: GREEN. Migration freshness: GREEN, no migrations to execute.
+- Behavioral HTTP contracts were executed inside the full PHPUnit suite and passed. Canon042 remains GREEN against the repository-owned behavioral evidence (functional 4/4, behavioral 2/2, UI 0/0, critical 2/2).
+- A direct npm `smoke` refresh request was not started because Console MCP admitted light work only under current engine backlog pressure; this did not invalidate the already executed behavioral PHPUnit coverage or the existing repository-owned Canon042 evidence. No user-observable UI surface changed, so Playwright screenshots are not applicable.
+- The supplied Inspecting baseline remains applicable because no PHP/source file in its inspected scope changed; only orchestration journal state and the consumer-local Gating artifact topology changed. The three medium long-method observations remain non-blocking growth/maintainability debt.
+
+### RC checkpoint
+
+The original hard canon front is remediated. The copied Gating implementation is preserved outside consumer `.gating/`, Canon052 is GREEN, deterministic quality/runtime/Doctrine gates are GREEN, and no authorized product-source remediation remains for this task.
+
 ## engine-20260928095245-commissioning-0925c7
 
 ### Reconnaissance and baseline
