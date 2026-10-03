@@ -1,0 +1,34 @@
+= Product Capability Audit: Commissioning
+:revdate: 2026-10-03
+
+== Boundary verdict
+
+Commissioning owns commission calculation and lifecycle for marketplace, affiliate, reseller, referral and revenue-share arrangements. It exports settlement instructions; it must not execute payouts.
+
+== Capability matrix
+
+[cols="3,1,4",options="header"]
+|===
+|Capability |Status |Audit
+|Commission rule identity |PARITY |Explicit commission business ownership exists.
+|Percentage/fixed calculation |PARITY |Core baseline for marketplace/affiliate models.
+|Seller/vendor commission |PARITY |Primary domain fit.
+|Affiliate/referral commission |PARITY |Repository explicitly includes these workflows.
+|Revenue split |PARITY |Explicitly owned.
+|Effective-date/versioned rules |PARTIAL |Required for reproducibility.
+|Tiered/threshold commission |PARTIAL |Modern partner programs commonly need this.
+|Order/refund reversal |PARTIAL |Must reverse/adjust on cancellation/refund.
+|Settlement instruction output |PARITY |Explicit boundary; execution belongs elsewhere.
+|Dispute/manual adjustment |PARTIAL |Needed for operator workflows.
+|Commission audit explanation |PARTIAL |Should expose rule/version/basis/result.
+|===
+
+== Milestone direction
+
+Current RC baseline: runtime-backed calculation, persistence, API parity, settlement handoff, idempotency, Doctrine mapping, and canonical quality evidence are GREEN.
+
+M3: effective-dated/versioned rules, deterministic calculation explanation, and scenario simulation.
+M4: tiers/thresholds plus reversal, clawback, dispute, and manual-adjustment lifecycle.
+M5: deeper vendor/affiliate/referral integration and operator reconciliation without payout ownership.
+
+
