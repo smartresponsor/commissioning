@@ -69,6 +69,7 @@ rule_set:
     - canon.064.failure_contract_ownership
     - canon.065.no_framework_failure_reimplementation
     - canon.066.failure_declaration_inventory
+    - canon.067.repository_root_entity
     - canon.mirror_contract
     - profile.contract_validity
     - structure.forbidden_architecture

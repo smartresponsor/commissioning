@@ -2,8 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Commissioning\Entity;
+namespace App\Commissioning\Entity\Commission;
 
+use App\Commissioning\Entity\CommissionDirectionEntity;
+use App\Commissioning\Entity\CommissionPlanEntity;
+use App\Commissioning\Entity\CommissionTypeEntity;
 use App\Commissioning\EntityInterface\CommissionEntityInterface;
 use App\Commissioning\Repository\CommissionRepository;
 use App\Objecting\EntityTrait\Embeddable\ObjectAuditEmbeddableTrait;

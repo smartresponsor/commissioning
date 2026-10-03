@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Commissioning\RepositoryInterface;
 
-use App\Commissioning\Entity\CommissionEntity;
+use App\Commissioning\Entity\Commission\CommissionEntity;
 
 /**
  * Defines the Commissioning persistence contract exposed by CommissionRepositoryInterface to application services and resolvers.

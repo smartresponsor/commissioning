@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Commissioning\Tests\Entity;
 
+use App\Commissioning\Entity\Commission\CommissionEntity;
 use App\Commissioning\Entity\CommissionAttributionEntity;
 use App\Commissioning\Entity\CommissionBeneficiaryEntity;
 use App\Commissioning\Entity\CommissionCalculationEntity;
 use App\Commissioning\Entity\CommissionCalculationLineEntity;
 use App\Commissioning\Entity\CommissionDirectionEntity;
-use App\Commissioning\Entity\CommissionEntity;
 use App\Commissioning\Entity\CommissionLedgerEntryEntity;
 use App\Commissioning\Entity\CommissionPlanEntity;
 use App\Commissioning\Entity\CommissionRateEntity;

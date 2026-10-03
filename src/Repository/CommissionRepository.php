@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Commissioning\Repository;
 
-use App\Commissioning\Entity\CommissionEntity;
+use App\Commissioning\Entity\Commission\CommissionEntity;
 use App\Commissioning\RepositoryInterface\CommissionRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
