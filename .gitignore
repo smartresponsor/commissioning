@@ -12,6 +12,7 @@
 /phpunit.xml
 /.php-cs-fixer.cache
 /.codebase-memory/
+/.console-mcp/
 /.gating/artifacts/
 
 ### Composer ###
