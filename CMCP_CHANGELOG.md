@@ -1,5 +1,196 @@
 # CMCP Orchestration Journal
 
+## 2026-10-03 — engine-20261003183227-commissioning-9519da
+
+### Baseline and selected RC work
+
+- Resolved `D:\\PhpstormProjects\\www\\Commissioning` through Console MCP on `checkpoint/pre-origin-sync` at `4f4996e36018e7617f2292a06e2d814c3ebe41f3`; upstream was aligned 0 ahead / 0 behind and eight pre-existing/concurrent dirty or untracked paths were preserved without reset, clean, stash, or overwrite.
+- Read the authoritative task specification, current Commissioning agent/manifests/release material, mandatory Objecting/Cruding/Viewing/Interfacing contracts, Gating owner contract, and normative Canonization rules Canon052, Canon054, and Canon067.
+- Consumed the supplied CanonScanning RED and Inspecting reports directly through Console MCP. Historical RED had exactly one hard failure: Canon052 copied Gating implementation under consumer `.gating/`; Inspecting had three medium long-method observations and no autofixable blocker.
+- Market/maturity baseline remains: mature commission/ICM platforms require deterministic calculation lineage, effective-dated plan/rate logic, adjustment/reversal handling, auditability, simulation and operator explainability. RC-critical work is correctness/canon/runtime evidence; richer simulation, dispute/clawback and operator UX remain growth work.
+
+### Canon mapping
+
+- Canon052 requires `gating/gate` as the Composer development dependency, canonical sibling symlink wiring, production package metadata, standard `gate`/aggregate `quality`, and artifact-only consumer `.gating/`.
+- Canon054 requires lower_snake_case identifiers and applies the component ownership prefix exactly once; root `commission` is canonical while `commission_commission` is forbidden duplication.
+- Canon067 maps `commissioning/commission` to `src/Entity/Commission/CommissionEntity.php` declaring `CommissionEntity`.
+- Objecting retains reusable system-field ownership; Cruding retains generic CRUD; Viewing retains the rendering boundary; Interfacing retains shell/template ownership. No responsibility was moved into Commissioning.
+
+### Verification and checkpoint
+
+- `composer validate --strict --check-lock`: GREEN.
+- `composer quality`: GREEN; PHP-CS-Fixer 0 pending files, PHPStan 0 errors, PHPUnit 76 tests / 529 assertions, generic Gating 0 failures.
+- `composer gating:canon`: GREEN, 83 rules / 0 failures / 0 warnings / 13 skips. Canon052, Canon054, and Canon067 are GREEN; Canon040 reports 91.1% lines / 82.2% methods / 87.7% branches; Canon042 reports functional 4/4, behavioral 2/2, UI 0/0 eligible, critical 2/2.
+- No PHP source, controller, route, form, template, navigation, browser/mobile UI, or user flow was changed in this execution window, so new visual screenshot evidence is not applicable.
+- Two follow-up Console-MCP Composer-script invocations (`runtime:about`, then `lint:container`) failed at connector transport with HTTP 502 before command execution. This is infrastructure/tooling failure, not reproduced Symfony runtime failure. The current HEAD is unchanged from earlier same-day GREEN Symfony/Doctrine evidence and deterministic source gates remain GREEN.
+- Git integration follow-up: the user explicitly authorized semantic review of all remaining dirty paths. Valuable documentation/licensing changes are to be committed coherently; local `.console-mcp/` runtime state is ignored; `.gating/README.md` is retained as the canonical non-executable artifact-boundary marker.
+
+## 2026-10-03 — engine-20261003182334-commissioning-611bd6
+
+### Baseline and selected RC work
+
+- Resolved `D:\\PhpstormProjects\\www\\Commissioning` through Console MCP on branch `checkpoint/pre-origin-sync`; preserved pre-existing dirty/untracked work without reset, stash, clean, or broad absorption.
+- Read the authoritative task specification, target manifests/docs, mandatory Objecting/Cruding/Viewing/Interfacing contracts, Gating, and normative Canonization rules Canon052, Canon054, and Canon067.
+- Consumed the supplied 2026-09-29 CanonScanning RED and Inspecting reports before live verification. The historical hard RED was Canon052 copied-Gating topology; current live Gating supersedes it.
+- Market/maturity baseline: mature ICM products emphasize versioned plan logic, sandbox/pre-deploy validation, calculation traceability, audit trails, adjustments/disputes, approvals, and real-time transparency. RC-critical work remains correctness/operability; richer simulation, disputes/clawbacks, and operator explainability stay in the growth stream.
+
+### Canon mapping and implementation
+
+- `commissioning/commission` maps through Canon067 to `src/Entity/Commission/CommissionEntity.php`; live Gating confirms the root Entity.
+- Canon052 maps to Composer-installed `gating/gate`, sibling development symlink, production package metadata, standard `gate`/`quality` integration, and artifact-only consumer `.gating/`; live Gating is GREEN.
+- Canon054 explicitly permits the root ownership stem table `commission` while requiring additional owned tables to apply `commission_` exactly once and forbidding `commission_commission` duplication.
+- Corrected stale local `AGENTS.md` table-naming guidance that still required every table to start literally with `commission_`; the agent-facing contract now matches Canon054 and the current `CommissionEntity` mapping.
+- No PHP source, routes, controllers, templates, forms, navigation, or browser/mobile UI behavior was changed.
+
+### Verification
+
+- `composer validate --strict --check-lock`: GREEN.
+- Pre-change live `gating:canon`: GREEN, 83 rules / 0 failures / 0 warnings / 13 skips; Canon052 and Canon067 GREEN; Canon040 coverage 91.1% lines / 82.2% methods / 87.7% branches; Canon042 functional 4/4, behavioral 2/2, UI 0/0 eligible, critical 2/2.
+- Post-change `composer quality`: GREEN; PHP-CS-Fixer 0 pending files, PHPStan 0 errors, PHPUnit 76 tests / 529 assertions, generic Gating 0 failures.
+- Post-change full `gating:canon`: GREEN, 83 rules / 0 failures / 0 warnings / 13 skips; Canon052, Canon054, and Canon067 GREEN.
+- Symfony runtime boot: GREEN on Symfony 8.1.7 / PHP 8.4.13; container lint GREEN; 11 YAML files valid.
+- Doctrine mapping validation: GREEN (`--skip-sync` by repository script contract); migrations up-to-date with nothing to execute.
+- Behavioral smoke: GREEN; `CommissionHttpBehaviorTest` and behavioral/UI evidence generation completed successfully. No UI/template/navigation source changed, so new screenshot capture is not applicable.
+- Existing managed PHP-server status probe was not applicable because this repository does not provide the requested `public/router.php`; no restart/start was attempted under REUSE_EXISTING_FIRST.
+- No fresh Inspecting run was required after this pass because only agent-facing Markdown/journal documentation changed; current PHP source fingerprint for Inspecting scope was not materially changed.
+- Follow-up reconciliation classifies `AGENTS.md`, `CMCP_CHANGELOG.md`, `RELEASE_READINESS_SUMMARY.md`, `LICENSE`, `NOTICE`, and the synchronized `PRODUCT_CAPABILITY_AUDIT.adoc` as repository value; `.console-mcp/` is local runtime state and is ignored; `.gating/README.md` remains the canonical artifact-boundary marker.
+
+## 2026-10-03 — engine-20261003181655-commissioning-adb4f8
+
+### Baseline and scope
+
+- Workspace resolved through Console MCP: `D:\\PhpstormProjects\\www\\Commissioning`, branch `checkpoint/pre-origin-sync`; pre-existing dirty/untracked work was preserved and not reset, cleaned, stashed, or silently absorbed.
+- Consumed the supplied CanonScanning RED report for fingerprint `d67c0d32e16409b0ed3cfe43a178cb1039caebc640013dfda4528d3fd987f5b3`: its only hard failure was historical Canon052 copied-Gating topology.
+- Consumed the supplied Inspecting report and the fresher post-remediation Inspecting report from `2026-10-03T18:12:00Z`; current source has zero PHPStan errors and two medium SRP/cohesion observations only.
+- Read current Commissioning instructions/manifests plus mandatory Objecting, Cruding, Viewing, Interfacing, Gating, and Canonization contracts. Normative Canon052 and Canon067 rules were consulted directly.
+
+### Canon and dependency mapping
+
+- `commissioning/commission` maps to `App\\Commissioning\\` and Canon067 requires `src/Entity/Commission/CommissionEntity.php`; the current tree satisfies this requirement.
+- Canon052 requires Composer-installed Gating, development symlink wiring, production package metadata, standard Composer gate/quality integration, and artifact-only consumer `.gating/`; current live Gating verifies this contour GREEN.
+- Generic CRUD remains Cruding-owned, reusable system fields Objecting-owned, rendering Viewing-owned, and shell/interface concerns Interfacing-owned.
+
+### Market / maturity split
+
+- Current ICM/commission-management products emphasize flexible plan mechanics, adjustments/clawbacks, scenario modeling, audit trails, approval workflows, and calculation traceability/explainability.
+- RC-critical workstream: verify live canonical/runtime quality and remove stale release-readiness claims that still described already-closed runtime, serializer, Doctrine, and idempotency gaps.
+- Growth workstream: effective-dated/versioned plans and rates, deeper rule-driven selection, reversal/clawback/dispute workflows, simulation, and operator-facing explanation/reconciliation remain post-RC unless promoted by correctness evidence.
+
+### Implementation
+
+- Updated `RELEASE_READINESS_SUMMARY.md` to the current verified M2 RC posture, including Canon067 ownership, executable runtime/Doctrine/serializer/idempotency evidence, current Canon/Gating and coverage results, fresh Inspecting observations, and a separated M3 growth roadmap.
+- No PHP source, controller, route, form, template, browser/mobile UI, navigation, or user interaction surface was changed.
+
+### Verification baseline
+
+- `composer validate --strict --check-lock`: GREEN.
+- Live `gating:canon`: GREEN, 83 rules / 0 failures / 0 warnings / 13 explicit skips; Canon052 and Canon067 both GREEN.
+- Canon040 evidence reported by the live gate: 91.1% lines, 82.2% methods, 87.7% branches.
+- Canon042 behavioral/UI evidence: functional 4/4, behavioral 2/2, UI 0/0 eligible, critical 2/2.
+
+### Final verification and integration
+
+- Aggregate `composer quality`: GREEN; PHP-CS-Fixer has 0 pending files, PHPStan has 0 errors, and PHPUnit passes 76 tests / 529 assertions.
+- Symfony runtime CLI boot (`runtime:about`), container lint, and all 11 YAML files: GREEN on Symfony 8.1.7 / PHP 8.4.13.
+- Doctrine mapping validation: GREEN under the repository `--skip-sync` contract; migrations are up to date.
+- Final post-documentation `gating:canon`: GREEN, 83 rules / 0 failures / 0 warnings / 13 explicit skips; Canon052 and Canon067 remain GREEN.
+- REUSE_EXISTING_FIRST probe found no Console-MCP-managed PHP server at port 8000, but an existing unmanaged listener responds HTTP 500; no start/restart was performed. CLI runtime verification is GREEN.
+- No browser/mobile/UI surface changed; new screenshot evidence is not applicable.
+- Git HEAD remains `4f4996e36018e7617f2292a06e2d814c3ebe41f3` on `checkpoint/pre-origin-sync`, aligned 0 ahead / 0 behind with `origin/checkpoint/pre-origin-sync`.
+- Eight pre-existing/concurrent dirty/untracked paths remain preserved. This task changed `RELEASE_READINESS_SUMMARY.md` and `CMCP_CHANGELOG.md`, but both were already dirty before this execution. Available staging/commit controls operate on whole files, so committing either would commingle prior/concurrent ownership; no unsafe stage/commit/push was performed. The published branch itself is already synchronized.
+
+## 2026-10-03 — engine-20261003175717-commissioning-61c024
+
+### Baseline and ownership
+
+- Console MCP resolved `D:\\PhpstormProjects\\www\\Commissioning`; branch `checkpoint/pre-origin-sync`. The branch advanced concurrently during this execution from `b31bd718` to `141ce90f`; current upstream remains aligned before this task commit.
+- Preserved unrelated pre-existing dirty/untracked paths, including `.gating/README.md`, `AGENTS.md`, `RELEASE_READINESS_SUMMARY.md`, `.console-mcp/`, `LICENSE`, `NOTICE`, and `PRODUCT_CAPABILITY_AUDIT.adoc`. A concurrent CMCP journal entry from another Commissioning execution is also preserved rather than rewritten.
+- Consumed the supplied 2026-09-29 CanonScanning RED report. Its sole hard failure was historical Canon052 copied-Gating topology; live verification now passes Canon052.
+- Consumed the supplied Inspecting report. Its three medium long-method observations were used as remediation evidence; current source was re-inspected after mutation.
+
+### Canon and dependency contour
+
+- Read and applied Commissioning plus mandatory Objecting, Cruding, Viewing, Interfacing, Gating, and Canonization contracts.
+- Consulted normative Canon052 and the newer Canon067 repository-root-Entity rule. For `commissioning/commission`, Canon067 requires `src/Entity/Commission/CommissionEntity.php` declaring `CommissionEntity`.
+- Commissioning remains the commission calculation/lifecycle and settlement-instruction owner. Generic CRUD remains Cruding-owned, system fields Objecting-owned, rendering Viewing-owned, and shell/interface Interfacing-owned.
+
+### Market / maturity split
+
+- Mature commission-management products expose explicit plan/rate rules, tier/threshold mechanics, calculation lineage, adjustments/reversals, approvals/auditability, and explainable settlement handoff.
+- RC-critical: close current canon drift, preserve persistence behavior, and prove deterministic/static/runtime/behavioral gates.
+- Growth: richer effective-dated plan simulation, disputes/adjustments, operator explanation UX, and broader workflow/analytics remain post-RC unless promoted by a correctness gate.
+
+### Implementation
+
+- Added `canon.067.repository_root_entity` to the Commissioning full-canon rule set.
+- Relocated the canonical root entity from `src/Entity/CommissionEntity.php` to `src/Entity/Commission/CommissionEntity.php`, aligned its namespace to `App\\Commissioning\\Entity\\Commission`, and updated repository/interface/test callers.
+- Preserved the current canonical root table name `commission`; current Gating accepts the component stem exactly once and rejects duplicated `commission_commission` ownership tokens.
+- No controller, route, template, form, navigation, or browser/mobile UI surface changed.
+
+### Verification
+
+- `composer validate --strict --check-lock`: GREEN.
+- PHP syntax for touched PHP files: GREEN.
+- PHPUnit: GREEN, 76 tests / 529 assertions.
+- PHPStan: GREEN, 0 errors.
+- PHP-CS-Fixer dry-run: GREEN after ordered-import repair.
+- Coverage: GREEN; Canon040 reports lines 89.5%, methods 81.0%, branches 90.1%.
+- Behavioral smoke/evidence: GREEN; functional 4/4, behavioral 2/2, critical 2/2, UI 0/0 eligible.
+- Symfony runtime `about`, container lint, and YAML lint: GREEN. Existing port 8000 probe returned HTTP 500 from an unmanaged process; no restart/start was performed under REUSE_EXISTING_FIRST.
+- Doctrine mapping validation: GREEN (`--skip-sync` by repository contract); migrations up-to-date: GREEN.
+- Full Commissioning canon after evidence refresh: 83 rules, 0 failed, 0 warning, 13 skipped; Canon052 and Canon067 both GREEN.
+- Fresh Inspecting report `D:\\PhpstormProjects\\www\\Inspecting\\.inspecting\\reports\\D--PhpstormProjects-www-Commissioning-20261003-181200.json`: PHPStan 0; previous long-method findings cleared; two medium SRP/cohesion observations remain review debt, not deterministic RC failures.
+- No user-observable UI change; screenshot evidence is not applicable for this pass.
+- Signed commit `4f4996e36018e7617f2292a06e2d814c3ebe41f3` (`Align Commissioning root entity with Canon067`) contains only the Canon067 rule-set/entity/caller/test change set and was pushed to `origin/checkpoint/pre-origin-sync`.
+- Post-push branch state is 0 ahead / 0 behind. Eight pre-existing/concurrent dirty/untracked paths remain preserved. `CMCP_CHANGELOG.md` itself is intentionally left uncommitted because it already contained another concurrent task's uncommitted journal entry; committing it here would commingle that execution's ownership.
+
+## 2026-10-03 — engine-20261003180904-commissioning-b42b22
+
+### Baseline
+
+- Workspace resolved through Console MCP: `D:\\PhpstormProjects\\www\\Commissioning`, branch `checkpoint/pre-origin-sync`.
+- Preserved all pre-existing dirty/untracked work. Current overlapping changes include Canon067 root-Entity relocation (`src/Entity/Commission/CommissionEntity.php` plus repository/test callers), Canon067 rule-set activation, documentation updates, and unrelated license/audit/local Console artifacts.
+- Consumed supplied CanonScanning RED evidence for fingerprint `d67c0d32e16409b0ed3cfe43a178cb1039caebc640013dfda4528d3fd987f5b3`: historical sole hard failure was Canon052 consumer `.gating/` topology. Current repository history records later GREEN remediation, so live gates are authoritative for this run.
+- Consumed supplied Inspecting evidence: three medium long-method observations and no autofixable blocker; current source has materially changed since that fingerprint, so fresh Inspecting is required after deterministic verification.
+
+### Contracts and canon mapping
+
+- Read Commissioning `AGENTS.md`, `README.md`, Composer/package manifests, release/capability documentation, current diff, historical journal, supplied Gating/Inspecting reports.
+- Read mandatory Objecting, Cruding, Viewing, Interfacing, Gating, and Canonization contracts/manifests.
+- Read normative `Canon067RepositoryRootEntityRule.md`: `commissioning/commission` maps to required root Entity `src/Entity/Commission/CommissionEntity.php` declaring `CommissionEntity`; current overlapping work implements this topology.
+- Boundary mapping remains: Commissioning owns commission calculation/lifecycle and settlement instructions, not payout execution; generic CRUD stays Cruding-owned, system fields Objecting-owned, presentation Viewing-owned, shell/interface Interfacing-owned.
+
+### Market / maturity opening mixin
+
+- Mature commission/ICM systems commonly require deterministic calculation lineage, effective-dated plans/rates, reversals/adjustments, auditability, idempotent settlement handoff, and operator explainability.
+- RC-critical workstream: verify and finish the current Canon067/Canon052-aligned repository state without commingling unrelated work; close deterministic/static/runtime/behavioral defects exposed by live gates.
+- Growth workstream: richer tier/threshold modeling, reversal/dispute workflows, calculation explanation UX, historical simulation and broader integration maturity remain post-RC unless a gate proves correctness impact.
+
+### Gates selected
+
+- Composer strict/check-lock validation; changed PHP syntax; PHP-CS-Fixer; PHPStan; PHPUnit/coverage; full Canon/Gating; Symfony runtime/container/YAML; Doctrine mapping/migration freshness; repository behavioral evidence; fresh Inspecting after mutation/current-tree verification.
+- No user-observable UI change is currently identified; screenshots are non-applicable unless verification discovers a UI-affecting change.
+
+### Verification result
+
+- `composer validate --strict --check-lock`: GREEN.
+- Changed/untracked PHP syntax: GREEN for 4 files covering the Canon067 root-Entity move and direct callers/tests.
+- Full `gating:canon`: GREEN, 83 rules / 0 failures / 0 warnings / 13 skips. Canon052 and Canon067 both pass on the live tree.
+- Aggregate `composer quality`: GREEN. PHP-CS-Fixer reports 0 pending files; PHPStan reports 0 errors; PHPUnit reports 76 tests / 529 assertions; generic Gating reports 0 failures.
+- Coverage refresh: GREEN; PHPUnit 76 tests / 529 assertions under Xdebug path coverage. Live Canon040 evidence remains GREEN at 89.5% lines, 81.0% methods, 90.1% branches.
+- Symfony runtime: GREEN on Symfony 8.1.7 / PHP 8.4.13; container lint GREEN; 11 YAML files valid.
+- Doctrine mapping validation: GREEN; migrations current with no migrations to execute.
+- Fresh Inspecting report `D--PhpstormProjects-www-Commissioning-20261003-181609.json`: PHPStan 0 errors; two medium, non-autofixable SRP cohesion observations only (`CommissionCalculationRecordService`, `CommissionDevelopmentSeedService`). These are design-review debt, not demonstrated correctness failures or RC blockers.
+- No browser/mobile/template/UI source changed in this execution window. Existing behavioral HTTP coverage passes inside PHPUnit and Canon042 remains GREEN; visual screenshot evidence is not applicable.
+
+### RC checkpoint
+
+- Historical supplied Canon052 RED is superseded by current deterministic evidence.
+- Current Canon067 topology is verified end-to-end by live Gating, syntax, static analysis, tests, Symfony boot/container, Doctrine mapping, migration freshness and fresh Inspecting.
+- No additional source mutation is justified from the current evidence; speculative service splitting is retained as growth/design debt rather than forced into RC.
+- Git integration for this task is restricted to this journal entry only; pre-existing dirty/untracked paths remain outside task ownership.
+
+
 ## 2026-10-03 — engine-20261003174709-commissioning-503804
 
 ### Baseline
