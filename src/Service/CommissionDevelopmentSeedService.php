@@ -34,59 +34,16 @@ final class CommissionDevelopmentSeedService implements CommissionDevelopmentSee
      */
     public function seedDefault(): array
     {
-        $createdPlans = 0;
-        $createdRates = 0;
-        $createdRules = 0;
-        $createdTiers = 0;
-
         $plan = $this->planRepository->findOneByCode('default');
+        $createdPlans = 0;
 
         if (!$plan instanceof CommissionPlanEntity) {
-            $plan = new CommissionPlanEntity('default', 'Default Commission Plan');
-            $this->planRepository->save($plan);
-            ++$createdPlans;
+            $plan = $this->createDefaultPlan();
+            $createdPlans = 1;
         }
 
-        $activeRates = $this->rateRepository->findActiveByPlanCode('default', 'USD');
-
-        if ([] === $activeRates) {
-            $percentageRate = new CommissionRateEntity(
-                plan: $plan,
-                type: CommissionRateTypeEnum::Percentage,
-                percentageRate: '10',
-                fixedMinorAmount: null,
-                currencyCode: 'USD',
-            );
-            $this->rateRepository->save($percentageRate);
-            ++$createdRates;
-
-            $tieredRate = new CommissionRateEntity(
-                plan: $plan,
-                type: CommissionRateTypeEnum::Tiered,
-                percentageRate: null,
-                fixedMinorAmount: null,
-                currencyCode: 'USD',
-            );
-            $this->rateRepository->save($tieredRate);
-            ++$createdRates;
-
-            $this->tierRepository->save(new CommissionTierEntity($tieredRate, 0, 99999, '5'));
-            $this->tierRepository->save(new CommissionTierEntity($tieredRate, 100000, null, '8'));
-            $createdTiers += 2;
-        }
-
-        $rules = $this->ruleRepository->findActiveByPlanCodeOrdered('default');
-
-        if ([] === $rules) {
-            $this->ruleRepository->save(new CommissionRuleEntity(
-                plan: $plan,
-                ruleKey: 'commission_enabled',
-                operator: CommissionRuleOperatorEnum::Equals,
-                expectedValue: '1',
-                priority: 10,
-            ));
-            ++$createdRules;
-        }
+        [$createdRates, $createdTiers] = $this->seedDefaultRates($plan);
+        $createdRules = $this->seedDefaultRule($plan);
 
         return [
             'createdPlans' => $createdPlans,
@@ -94,5 +51,63 @@ final class CommissionDevelopmentSeedService implements CommissionDevelopmentSee
             'createdRules' => $createdRules,
             'createdTiers' => $createdTiers,
         ];
+    }
+
+    private function createDefaultPlan(): CommissionPlanEntity
+    {
+        $plan = new CommissionPlanEntity('default', 'Default Commission Plan');
+        $this->planRepository->save($plan);
+
+        return $plan;
+    }
+
+    /**
+     * @return array{0: int, 1: int}
+     */
+    private function seedDefaultRates(CommissionPlanEntity $plan): array
+    {
+        if ([] !== $this->rateRepository->findActiveByPlanCode('default', 'USD')) {
+            return [0, 0];
+        }
+
+        $percentageRate = new CommissionRateEntity(
+            plan: $plan,
+            type: CommissionRateTypeEnum::Percentage,
+            percentageRate: '10',
+            fixedMinorAmount: null,
+            currencyCode: 'USD',
+        );
+        $this->rateRepository->save($percentageRate);
+
+        $tieredRate = new CommissionRateEntity(
+            plan: $plan,
+            type: CommissionRateTypeEnum::Tiered,
+            percentageRate: null,
+            fixedMinorAmount: null,
+            currencyCode: 'USD',
+        );
+        $this->rateRepository->save($tieredRate);
+
+        $this->tierRepository->save(new CommissionTierEntity($tieredRate, 0, 99999, '5'));
+        $this->tierRepository->save(new CommissionTierEntity($tieredRate, 100000, null, '8'));
+
+        return [2, 2];
+    }
+
+    private function seedDefaultRule(CommissionPlanEntity $plan): int
+    {
+        if ([] !== $this->ruleRepository->findActiveByPlanCodeOrdered('default')) {
+            return 0;
+        }
+
+        $this->ruleRepository->save(new CommissionRuleEntity(
+            plan: $plan,
+            ruleKey: 'commission_enabled',
+            operator: CommissionRuleOperatorEnum::Equals,
+            expectedValue: '1',
+            priority: 10,
+        ));
+
+        return 1;
     }
 }

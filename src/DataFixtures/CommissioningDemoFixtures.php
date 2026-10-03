@@ -50,15 +50,7 @@ final class CommissioningDemoFixtures
                 $beneficiaries[] = $beneficiary;
             }
 
-            foreach (CommissionRateTypeEnum::cases() as $rateType) {
-                $manager->persist(new CommissionRateEntity(
-                    $plan,
-                    $rateType,
-                    CommissionRateTypeEnum::Percentage === $rateType ? '0.1200' : (CommissionRateTypeEnum::Hybrid === $rateType ? '0.0750' : null),
-                    CommissionRateTypeEnum::Fixed === $rateType ? 750 : (CommissionRateTypeEnum::Hybrid === $rateType ? 500 : null),
-                    CommissionRateTypeEnum::Fixed === $rateType ? 'USD' : (CommissionRateTypeEnum::Hybrid === $rateType ? 'USD' : null),
-                ));
-            }
+            $this->persistRates($manager, $plan);
 
             $batch = new CommissionSettlementBatchEntity(sprintf('batch-%02d', $index));
             $manager->persist($batch);
@@ -72,20 +64,7 @@ final class CommissioningDemoFixtures
             );
             $manager->persist($calculation);
 
-            $manager->persist(new CommissionCalculationLineEntity(
-                $calculation,
-                CommissionCalculationLineTypeEnum::Base,
-                $calculation->getCurrencyCode(),
-                $calculation->getBasisMinorAmount(),
-                'Basis amount',
-            ));
-            $manager->persist(new CommissionCalculationLineEntity(
-                $calculation,
-                CommissionCalculationLineTypeEnum::PercentageCommission,
-                $calculation->getCurrencyCode(),
-                $calculation->getCommissionMinorAmount(),
-                'Percentage commission',
-            ));
+            $this->persistCalculationLines($manager, $calculation);
 
             $ledgerEntry = new CommissionLedgerEntryEntity(
                 $calculation,
@@ -104,5 +83,36 @@ final class CommissioningDemoFixtures
         }
 
         $manager->flush();
+    }
+
+    private function persistRates(ObjectManager $manager, CommissionPlanEntity $plan): void
+    {
+        foreach (CommissionRateTypeEnum::cases() as $rateType) {
+            $manager->persist(new CommissionRateEntity(
+                $plan,
+                $rateType,
+                CommissionRateTypeEnum::Percentage === $rateType ? '0.1200' : (CommissionRateTypeEnum::Hybrid === $rateType ? '0.0750' : null),
+                CommissionRateTypeEnum::Fixed === $rateType ? 750 : (CommissionRateTypeEnum::Hybrid === $rateType ? 500 : null),
+                CommissionRateTypeEnum::Fixed === $rateType ? 'USD' : (CommissionRateTypeEnum::Hybrid === $rateType ? 'USD' : null),
+            ));
+        }
+    }
+
+    private function persistCalculationLines(ObjectManager $manager, CommissionCalculationEntity $calculation): void
+    {
+        $manager->persist(new CommissionCalculationLineEntity(
+            $calculation,
+            CommissionCalculationLineTypeEnum::Base,
+            $calculation->getCurrencyCode(),
+            $calculation->getBasisMinorAmount(),
+            'Basis amount',
+        ));
+        $manager->persist(new CommissionCalculationLineEntity(
+            $calculation,
+            CommissionCalculationLineTypeEnum::PercentageCommission,
+            $calculation->getCurrencyCode(),
+            $calculation->getCommissionMinorAmount(),
+            'Percentage commission',
+        ));
     }
 }
